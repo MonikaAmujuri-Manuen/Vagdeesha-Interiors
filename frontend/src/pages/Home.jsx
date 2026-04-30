@@ -130,62 +130,43 @@ const portfolio = [
       <Hero />
 
 
-      <div className="bg-[#F5EFE6] py-20 px-10 md:px-20">
+<div className="bg-[#F5EFE6] py-16 md:py-20 px-4 sm:px-6 md:px-20">
 
-        {/*Atelier SECTION */}
-        <Reveal className="grid md:grid-cols-2 gap-16 items-center">
+  {/* ATELIER */}
+  <Reveal className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
-          {/* LEFT CONTENT */}
-          <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6 text-center md:text-left">
+      <p className="text-xs tracking-[0.3em] text-[#C89B3C]">
+        THE ATELIER
+      </p>
 
-            <p
-              className={`text-xs tracking-[0.3em] text-[#C89B3C] `}
-            >
-              THE ATELIER
-            </p>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#5A0F14] leading-tight">
+        Quiet Luxury,<br />Loud Heritage.
+      </h2>
 
-            <h2
-              className={`text-4xl md:text-5xl font-serif text-[#5A0F14] leading-tight 
-                `}
-            >
-              Quiet Luxury,<br />Loud Heritage.
-            </h2>
+      <p className="text-gray-600 max-w-lg mx-auto md:mx-0 text-sm md:text-base">
+        At Vaagdeesha, we believe that luxury is not about excess—it's about
+        the meticulous curation of space, texture, and light.
+      </p>
+    </div>
 
-            <p
-              className={`text-gray-600 max-w-lg `}
-            >
-              At Vaagdeesha, we believe that luxury is not about excess—it's about
-              the meticulous curation of space, texture, and light. Each project is
-              a bespoke narrative, balancing architectural integrity with modern living.
-            </p>
-          </div>
-
-          {/* RIGHT IMAGE */}
-          <div
-            className={`flex justify-center`}
-          >
-            <div className="rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] h-[500px]">
-
-              <img
-                src={atelier1}
-                alt="Luxury Interior"
-                style={{
-                  transform: `translateY(${offset * 0.03 - 20}px)`
-                }}
-                className="w-full h-[120%] object-cover brightness-95
-             transition-all duration-700 ease-out
-             hover:scale-105 hover:-translate-y-2 hover:brightness-100"
-              />
-
-            </div>
-          </div>
-
-        </Reveal>
+    <div className="flex justify-center">
+      <div className="rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] h-[320px] sm:h-[400px] md:h-[500px] w-full max-w-[500px]">
+        <img
+          src={atelier1}
+          alt="Luxury Interior"
+          style={{ transform: `translateY(${offset * 0.03 - 20}px)` }}
+          className="w-full h-[120%] object-cover brightness-95 transition-all duration-700 ease-out hover:scale-105"
+        />
       </div>
+    </div>
+
+  </Reveal>
+</div>
 
       {/*Legacy SECTION */}
 
-      <section className="bg-gradient-to-b from-[#F8F4EE] to-[#F5EFE6] py-24 px-6 border-t border-[#E8E0D6]">
+      <section className="bg-gradient-to-b from-[#F8F4EE] to-[#F5EFE6] py-16 md:py-24 px-4 sm:px-6 border-t border-[#E8E0D6]">
 
         <div className="max-w-6xl mx-auto text-center">
 
@@ -195,7 +176,7 @@ const portfolio = [
           </p>
 
           {/* STATS */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
 
             {[
               { number: 25, label: "Years Experience" },
@@ -235,22 +216,16 @@ const portfolio = [
 
       {/*Portfolio SECTION */}
 
-      <section className="bg-[#F9F6F1] py-24 px-6 border-t border-[#E8E0D6]">
+      <section className="bg-[#F9F6F1] py-16 md:py-24 px-4 sm:px-6 border-t border-[#E8E0D6]">
 
         {/* HEADER */}
-        <div className="flex justify-between items-end mb-16 max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-[#5A0F14] relative inline-block">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#5A0F14]">
             Portfolio Highlights
             <span className="absolute left-0 -bottom-2 w-16 h-[2px] bg-[#C89B3C]"></span>
           </h2>
 
-          <Link
-            to="/portfolio"
-            className="
-    text-sm tracking-[0.2em] text-[#5A0F14]
-    relative group transition-all duration-300
-  "
-          >
+          <Link to="/portfolio" className="text-xs md:text-sm tracking-[0.2em] text-[#5A0F14]">
             EXPLORE ALL WORKS →
 
             {/* UNDERLINE */}
@@ -262,13 +237,12 @@ const portfolio = [
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto">
 
           {portfolio.map((item, index) => (
             <div
               key={index}
-              className={`group cursor-pointer ${index === 1 ? "translate-y-10" : "-translate-y-10"
-                }`}
+              className={`group cursor-pointer ${window.innerWidth < 768 ? "" : index === 1 ? "translate-y-10" : "-translate-y-10"}`}
             >
 
               {/* IMAGE */}
@@ -277,17 +251,13 @@ const portfolio = [
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-[420px] object-cover 
+                  className="w-full h-[280px] sm:h-[350px] md:h-[420px] object-cover 
                        transition-all duration-700 ease-out 
                        group-hover:scale-110 group-hover:brightness-95"
                 />
 
                 {/* DARK OVERLAY */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
-
-                {/* CENTER ARROW */}
-                
-
               </div>
 
               {/* TEXT OUTSIDE */}
@@ -309,19 +279,19 @@ const portfolio = [
       {/*Service SECTION */}
 
       <Reveal>
-  <section id="services" className="bg-[#F5EFE6] py-24 px-6 text-center">
+  <section id="services" className="bg-[#F5EFE6] py-16 md:py-24 px-4 sm:px-6 text-center">
 
       {/* HEADING */}
-      <h2 className="text-5xl font-serif text-[#5A0F14] mb-6">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#5A0F14] mb-6">
         Signature Services
       </h2>
 
-      <p className="max-w-2xl mx-auto text-[#6B7280] mb-16">
+      <p className="max-w-2xl mx-auto text-[#6B7280] mb-12 md:mb-16 text-sm md:text-base">
         From initial blueprint to final styling, we offer an end-to-end luxury experience tailored to your unique lifestyle.
       </p>
 
       {/* GRID */}
-      <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
 
         {services.map((service, index) => {
           const Icon = service.icon;
@@ -385,7 +355,7 @@ const portfolio = [
     {/*Testimonial SECTION */}
 
     <Reveal>
-  <section className="bg-[#F5EFE6] py-16 px-6 text-center border-t border-[#E8E0D6]">
+  <section className="bg-[#F5EFE6] py-12 md:py-16 px-4 sm:px-6 text-center border-t border-[#E8E0D6]">
   <div
   className="max-w-5xl mx-auto relative overflow-hidden"
   onMouseEnter={() => setPaused(true)}
@@ -416,7 +386,7 @@ const portfolio = [
 </div>
 
     {/* SLIDING CONTENT */}
-    <div className="relative h-[160px] md:h-[180px]">
+    <div className="relative h-[220px] md:h-[180px]">
 
       {testimonials.map((item, i) => (
         <div
@@ -428,7 +398,7 @@ const portfolio = [
             }`}
         >
           {/* TEXT */}
-          <p className="text-xl md:text-2xl font-serif italic text-[#5A0F14] leading-relaxed">
+          <p className="text-base sm:text-lg md:text-2xl font-serif italic px-2 text-[#5A0F14] leading-relaxed">
             "{item.text}"
           </p>
 
@@ -463,7 +433,7 @@ const portfolio = [
 {/*CTA SECTION */}
 
       <Reveal>
-  <section className="relative py-28 px-6 text-center overflow-hidden">
+  <section className="relative py-16 md:py-28 px-4 sm:px-6 text-center overflow-hidden">
   {/* BASE GRADIENT */}
 <div className="absolute inset-0 bg-gradient-to-br 
   from-[#7A1622] via-[#6B0F1A] to-[#3E0A0F]" />
@@ -476,7 +446,7 @@ const portfolio = [
 
           {/* HEADING */}
           <h2
-            className={`text-4xl md:text-5xl font-serif text-[#C89B3C] mb-6 
+            className={`text-2xl sm:text-3xl md:text-5xl font-serif text-[#C89B3C] mb-4 md:mb-6 
       transition-all duration-700 tracking-tight `}
           >
             Let’s Design Your Legacy.
@@ -484,7 +454,7 @@ const portfolio = [
 
           {/* SUBTEXT */}
           <p
-            className={`text-[#E5D3C2] text-lg mb-10 
+            className={`text-[#E5D3C2] text-sm md:text-lg mb-8 md:mb-10
       transition-all duration-700 `}
           >
             Begin your journey with the world's most refined interior atelier.
@@ -492,7 +462,7 @@ const portfolio = [
 
           {/* BUTTON */}
           <button onClick={() => navigate("/contact#form")}
-            className={`bg-[#F5EFE6] text-[#5A0F14] px-10 py-4 text-sm tracking-[0.2em] 
+            className={`bg-[#F5EFE6] text-[#5A0F14] px-6 md:px-10 py-3 md:py-4 text-xs md:text-sm tracking-[0.2em] 
       font-medium rounded-md transition-all duration-300
       hover:bg-[#C89B3C] hover:text-white hover:scale-[1.03]
       hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]

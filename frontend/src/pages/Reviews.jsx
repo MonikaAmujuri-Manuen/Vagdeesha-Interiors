@@ -1,6 +1,11 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Reviews() {
   const navigate = useNavigate();
@@ -37,7 +42,7 @@ function useInView() {
 }
   return (
 
-    <div className="bg-[#F5EFE6] py-20 px-10 md:px-20">
+    <div className="bg-[#F5EFE6] py-16 md:py-20 px-4 sm:px-6 md:px-20">
       <Navbar />
 
     {/*Hero SECTION */}
@@ -45,22 +50,22 @@ function useInView() {
     <section
   ref={heroRef}
   className={`
-    text-center py-28 px-6 bg-[#F5EFE6]
+    text-center py-16 md:py-28 px-4 sm:px-6 bg-[#F5EFE6]
     transition-all duration-1000 ease-out
     ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
   `}
 >
       
 
-      <p className="tracking-[0.3em] text-[#C89B3C] text-sm mb-4">
+      <p className="tracking-[0.3em] text-[#C89B3C] text-xs md:text-sm mb-3 md:mb-4">
         CLIENT REVIEWS
       </p>
 
-      <h1 className="text-5xl md:text-6xl font-serif text-[#5A0F14] mb-6">
+      <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#5A0F14] mb-4 md:mb-6">
         What Our Clients Say
       </h1>
 
-      <p className="max-w-2xl mx-auto text-[#7A6A5A]">
+      <p className="max-w-2xl mx-auto text-[#7A6A5A] text-sm md:text-base">
         Experiences from clients who trusted us to design their spaces,
         reflecting our commitment to architectural heritage and modern minimalism.
       </p>
@@ -71,7 +76,7 @@ function useInView() {
     <section
   ref={featuredRef}
   className={`
-    py-28 px-6 text-center bg-[#EFE7DC]
+    py-16 md:py-28 px-4 sm:px-6 text-center bg-[#EFE7DC]
     transition-all duration-1000 ease-out
     ${featuredVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
   `}
@@ -79,27 +84,83 @@ function useInView() {
       <div className="max-w-4xl mx-auto">
         <div className="text-6xl text-[#E5D9CC] mb-6"></div>
 
-        <p className="text-3xl md:text-4xl font-serif text-[#5A0F14] leading-relaxed">
+        <p className="text-xl sm:text-2xl md:text-4xl font-serif text-[#5A0F14] leading-relaxed">
           "The team at Vaagdeesha Interiors transformed our heritage apartment into a modern 
           scantuary without losing it's original character. Their eye for detail and mastery of 
           texture is truly unparalleled in the industry."
         </p>
 
-        <p className="mt-8 text-[#5A0F14] font-medium">
+        <p className="mt-6 md:mt-8 text-[#5A0F14] font-medium">
           Julian Throne
         </p>
 
-        <p className="text-sm tracking-widest text-[#C89B3C]">
+        <p className="text-xs tracking-widest text-[#C89B3C]">
           HERITAGE PENTHOUSE
         </p>
       </div>
     </section>
 
-    <section className="py-24 px-6 bg-[#F5EFE6]">
+    <section className="py-16 md:py-24 px-4 sm:px-6 bg-[#F5EFE6]">
+
+      <div className="md:hidden">
+  <Swiper
+    modules={[Autoplay, Pagination]}
+    spaceBetween={16}
+    slidesPerView={1.1}
+    centeredSlides
+    loop={false}
+    autoplay={{
+      delay: 3500,
+      disableOnInteraction: false,
+    }}
+    pagination={{
+      el: ".custom-pagination",
+      clickable: true,
+    }}
+  >
+    {[
+      { 
+        comment: "The level of sophistication and attention to detail in their work is remarkable.They truly understand our vision for a quite, luxury home.",
+        client: "Aria Kensington",
+        role: "CREATIVE DIRECTOR"
+      },
+      {
+        comment: "Working with vagdeesha was a seamless experience. They managed to balance historical integrity with absolute modern comfort.",
+        client: "Thomas Moreland",
+        role: "ESTATE COLLECTOR"
+      },
+      {
+        comment: "Their approach to lighting and texture changed how we feel in our space. It's not just a house anymore, it's a curated gallery.",
+        client: "Isabella Vough",
+        role: "PRIVATE CLIENT"
+      }
+    ].map((item, i) => (
+      <SwiperSlide key={i}>
+        <div className="bg-white p-6 rounded-xl border border-[#E5D9CC]">
+          <div className="text-[#C89B3C] mb-2">★★★★★</div>
+
+          <p className="text-[#7A6A5A] text-sm mb-4">
+            {item.comment}
+          </p>
+
+          <p className="text-[#5A0F14] font-medium">
+            {item.client}
+          </p>
+
+          <p className="text-xs text-[#A89A8A] uppercase">
+            {item.role}
+          </p>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+  <div className="custom-pagination mt-4 flex justify-center"></div>
+</div>
+
       <div
   ref={cardsRef}
   className={`
-    group max-w-6xl mx-auto grid md:grid-cols-3 gap-8
+    group hidden md:grid max-w-6xl mx-auto md:grid-cols-3 gap-8
     transition-all duration-1000 ease-out
     ${cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
   `}
@@ -116,9 +177,9 @@ function useInView() {
             role: "ESTATE COLLECTOR"
           },
           {
-            comment: "Working with vagdeesha was a seamless experience. They managed to balance historical integrity with absolute modern comfort.",
-            client: "Thomas Moreland",
-            role: "ESTATE COLLECTOR"
+            comment: "Their approach to lighting and texture changed how we feel in our space. It's not just a house anymore, it's a curated gallery.",
+            client: "Isabella Vough",
+            role: "PRIVATE CLIENT"
           }
          
         ].map((item,i)=>(
@@ -156,17 +217,17 @@ function useInView() {
     <section
   ref={gridRef}
   className={`
-    py-24 px-6 bg-[#EFE7DC]
+    py-16 md:py-24 px-4 sm:px-6 bg-[#EFE7DC]
     transition-all duration-1000 ease-out
     ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
   `}
 >
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 md:gap-8">
 
     {/* BIG */}
-    <div className="md:col-span-2 bg-white p-10 rounded-xl">
+    <div className="md:col-span-2 bg-white p-6 md:p-10 rounded-xl">
       <div className="text-[#C89B3C] mb-4">★★★★★</div>
-      <p className="text-2xl font-serif text-[#5A0F14]">
+      <p className="text-lg md:text-2xl font-serif text-[#5A0F14]">
         "The team at Vaagdeesha Interiors transformed our heritage apartment to modern scantuary without losing it's 
         original character. Their eye for detail and mastery of texture is truly unparalleled in the industry."
       </p>
@@ -181,9 +242,9 @@ function useInView() {
     </div>
 
     {/* SMALL */}
-    <div className="bg-[#F5EFE6] p-8 rounded-xl">
-      <p className="text-[#7A6A5A]">
-        <div className="text-[#C89B3C] mb-4">★★</div>
+    <div className="bg-[#F5EFE6] p-6 md:p-8 rounded-xl">
+      <div className="text-[#C89B3C] mb-4">★★</div>
+      <p className="text-sm md:text-base text-[#7A6A5A]">
         "Minimalism is often cold, but Vaagdeesha brings a warmth that is rare. They curated every piece like it was for gallery."
       </p>
 
@@ -194,8 +255,8 @@ function useInView() {
   </div>
 </section>
 
-<section className="py-24 px-6 bg-[#F5EFE6]">
-  <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+<section className="py-16 md:py-24 px-4 sm:px-6 bg-[#F5EFE6]">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
 <div
   ref={imgRef}
@@ -213,7 +274,7 @@ function useInView() {
   <img
     src="/images/review.png"
     className={`
-      w-full h-[480px] object-cover
+      w-full h-[260px] sm:h-[360px] md:h-[480px] object-cover 
       transition-transform duration-[2000ms] ease-out
       ${imgVisible ? "scale-100" : "scale-110"}
     `}
@@ -237,7 +298,7 @@ function useInView() {
     <div
   ref={cardRef}
   className={`
-    bg-[#EFE7DC] p-10 rounded-md
+    bg-[#EFE7DC] p-6 md:p-10 rounded-md 
 
     transition-all duration-1000 ease-out delay-200
 
@@ -258,7 +319,7 @@ function useInView() {
     </div>
   </div>
 
-  <p className="text-[#7A6A5A] leading-relaxed mb-6">
+  <p className="text-sm md:text-base text-[#7A6A5A] leading-relaxed mb-6">
     "From the initial sketch to the final placement of the custom-woven rugs,
     the journey was seamless. They don’t just design rooms; they curate a lifestyle
     that feels both historic and incredibly fresh."
@@ -278,12 +339,12 @@ function useInView() {
 <section
   ref={lastCardsRef}
   className={`
-    py-24 px-6 bg-[#EFE7DC]
+    py-16 md:py-24 px-4 sm:px-6 bg-[#EFE7DC]
     transition-all duration-1000 ease-out
     ${lastCardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
   `}
 >
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+  <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
 
     {/* CARD 1 */}
     <div
@@ -345,20 +406,20 @@ function useInView() {
 <section
   ref={ctaRef}
   className={`
-    py-28 text-center bg-[#F5EFE6]
+    py-20 md:py-28 px-4 text-center bg-[#F5EFE6]
     transition-all duration-1000 ease-out
     ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
   `}
 >
-  <h2 className="text-4xl font-serif text-[#5A0F14] mb-4">
+  <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#5A0F14] mb-4">
     Ready to Begin Your Narrative?
   </h2>
 
-  <p className="text-[#7A6A5A] mb-8">
+  <p className="text-sm md:text-base text-[#7A6A5A] mb-6 md:mb-8">
     Join our list of discerning clients and let us transform your vision.
   </p>
 
-  <div className="flex justify-center gap-6">
+  <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
 
     {/* PRIMARY BUTTON */}
     <button onClick={() => navigate("/contact#form")}

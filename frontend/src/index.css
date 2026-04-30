@@ -349,3 +349,25 @@ html {
   50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
+
+/* SWIPER DOTS - LUXURY STYLE */
+/* Default dots */
+.custom-pagination .swiper-pagination-bullet {
+  background: #CBBFB2;
+  opacity: 1;
+  width: 6px;
+  height: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Active dot → GOLD */
+.custom-pagination .swiper-pagination-bullet-active {
+  background: #C89B3C;
+  width: 18px;
+  border-radius: 10px;
+}
+
+/* Optional hover luxury effect */
+.custom-pagination .swiper-pagination-bullet:hover {
+  background: #6B0F1A; /* maroon */
+}
