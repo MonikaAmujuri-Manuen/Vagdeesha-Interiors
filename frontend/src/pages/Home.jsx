@@ -4,9 +4,10 @@ import Reveal from "../components/Reveal";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import atelier1 from "../assets/atelier1.jpg";
-import portfolio1 from "../assets/portfolio1.png"
-import portfolio4 from "../assets/portfolio4.jpg"
-import portfolio3 from "../assets/portfolio3.png"
+import portfolio1 from "../assets/portfolio/portfolio1.png"
+import portfolio2 from "../assets/portfolio/portfolio2.jpg"
+import portfolio4 from "../assets/portfolio/portfolio4.jpg"
+import portfolio3 from "../assets/portfolio/portfolio3.png"
 import client from "../assets/client.png"
 import client2 from "../assets/client2.png"
 import { useEffect, useRef, useState } from "react"
@@ -60,10 +61,39 @@ useEffect(() => {
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
 
+const scrollRef = useRef(null);
+
+useEffect(() => {
+  const container = scrollRef.current;
+  if (!container) return;
+
+  let scrollAmount = 0;
+
+  const scroll = () => {
+    if (!container) return;
+
+    scrollAmount += 0.5; // speed (adjust if needed)
+
+    if (scrollAmount >= container.scrollWidth / 2) {
+      scrollAmount = 0; // reset for infinite loop
+    }
+
+    container.scrollLeft = scrollAmount;
+  };
+
+  const interval = setInterval(scroll, 16); // smooth animation
+
+  return () => clearInterval(interval);
+}, []);
 
 const portfolio = [
   {
     img: portfolio1,
+    title: "The Celestial Villa",
+    subtitle: "MODERN HERITAGE · HYDERABAD",
+  },
+  {
+    img: portfolio2,
     title: "The Celestial Villa",
     subtitle: "MODERN HERITAGE · HYDERABAD",
   },
@@ -135,84 +165,52 @@ const portfolio = [
   {/* ATELIER */}
   <Reveal className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
-    <div className="space-y-4 md:space-y-6 text-center md:text-left">
-      <p className="text-xs tracking-[0.3em] text-[#C89B3C]">
-        THE ATELIER
+  <div className="space-y-5 md:space-y-6 text-center md:text-left">
+
+    {/* Label */}
+    <p className="text-xs tracking-[0.35em] text-[#C89B3C] uppercase">
+      The Atelier
+    </p>
+
+    {/* Heading */}
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-cormorant font-medium text-[#5A0F14] leading-[1.1]">
+      Quiet Luxury,<br />Loud Heritage.
+    </h2>
+
+    {/* Paragraph */}
+    <div className="text-gray-600 max-w-lg mx-auto md:mx-0 text-sm md:text-base space-y-3 leading-relaxed">
+      <p>
+        At Vaagdeesha, luxury is not defined by excess, but by intention.
       </p>
-
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#5A0F14] leading-tight">
-        Quiet Luxury,<br />Loud Heritage.
-      </h2>
-
-      <p className="text-gray-600 max-w-lg mx-auto md:mx-0 text-sm md:text-base">
-        At Vaagdeesha, we believe that luxury is not about excess—it's about
-        the meticulous curation of space, texture, and light.
+      <p>
+        We design spaces that are calm, refined, and deeply personal—where every material, texture, and detail is thoughtfully curated.
+      </p>
+      <p>
+        Our approach blends timeless craftsmanship with modern sensibilities, creating interiors that feel both sophisticated and lived-in.
       </p>
     </div>
 
-    <div className="flex justify-center">
-      <div className="rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] h-[320px] sm:h-[400px] md:h-[500px] w-full max-w-[500px]">
-        <img
-          src={atelier1}
-          alt="Luxury Interior"
-          style={{ transform: `translateY(${offset * 0.03 - 20}px)` }}
-          className="w-full h-[120%] object-cover brightness-95 transition-all duration-700 ease-out hover:scale-105"
-        />
-      </div>
-    </div>
+    {/* Optional Signature Line */}
+    <p className="text-sm italic text-[#5A0F14]/80">
+      — Designed with purpose. Crafted with precision.
+    </p>
 
-  </Reveal>
+  </div>
+
+  {/* Image */}
+  <div className="flex justify-center">
+    <div className="rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.25)] h-[320px] sm:h-[400px] md:h-[500px] w-full max-w-[500px]">
+      <img
+        src={atelier1}
+        alt="Luxury Interior"
+        style={{ transform: `translateY(${offset * 0.03 - 20}px)` }}
+        className="w-full h-[120%] object-cover brightness-95 transition-all duration-700 ease-out hover:scale-105"
+      />
+    </div>
+  </div>
+
+</Reveal>
 </div>
-
-      {/*Legacy SECTION */}
-
-      <section className="bg-gradient-to-b from-[#F8F4EE] to-[#F5EFE6] py-16 md:py-24 px-4 sm:px-6 border-t border-[#E8E0D6]">
-
-        <div className="max-w-6xl mx-auto text-center">
-
-          {/* HEADING */}
-          <p className="text-[#C89B3C] text-xs tracking-[0.3em] mb-4">
-            OUR LEGACY
-          </p>
-
-          {/* STATS */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
-
-            {[
-              { number: 25, label: "Years Experience" },
-              { number: 120, label: "Projects Completed" },
-              { number: 50, label: "Happy Clients" },
-              { number: 15, label: "Design Awards" },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="group flex flex-col items-center space-y-2 
-                     transition-all duration-300 
-                     hover:-translate-y-2 cursor-pointer"
-              >
-
-                {/* NUMBER */}
-                <h3 className="text-3xl md:text-4xl font-serif text-[#5A0F14] 
-                         transition-colors duration-300 
-                         group-hover:text-[#C89B3C]">
-                  <Counter target={item.number} />
-                </h3>
-
-                {/* LABEL */}
-                <p className="text-sm text-[#7A6A5C] tracking-wide 
-                        transition-colors duration-300 
-                        group-hover:text-[#C89B3C]">
-                  {item.label}
-                </p>
-
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
 
       {/*Portfolio SECTION */}
 
@@ -222,7 +220,6 @@ const portfolio = [
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#5A0F14]">
             Portfolio Highlights
-            <span className="absolute left-0 -bottom-2 w-16 h-[2px] bg-[#C89B3C]"></span>
           </h2>
 
           <Link to="/portfolio" className="text-xs md:text-sm tracking-[0.2em] text-[#5A0F14]">
@@ -237,48 +234,86 @@ const portfolio = [
         </div>
 
         {/* GRID */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto">
+        {/* GRID / SCROLL */}
+<div className="max-w-6xl mx-auto">
 
-          {portfolio.map((item, index) => (
-            <div
-              key={index}
-              className={`group cursor-pointer ${window.innerWidth < 768 ? "" : index === 1 ? "translate-y-10" : "-translate-y-10"}`}
-            >
+  {/* MOBILE → Horizontal Scroll */}
+  <div className="flex gap-6 overflow-x-auto pb-4 md:hidden scroll-smooth snap-x snap-mandatory">
 
-              {/* IMAGE */}
-              <div className="relative overflow-hidden">
+    {portfolio.map((item, index) => (
+      <div
+        key={index}
+        className="min-w-[75%] sm:min-w-[60%] snap-start group cursor-pointer"
+      >
+        {/* IMAGE */}
+        <div className="relative overflow-hidden rounded-xl">
 
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-[280px] sm:h-[350px] md:h-[420px] object-cover 
-                       transition-all duration-700 ease-out 
-                       group-hover:scale-110 group-hover:brightness-95"
-                />
+          <img
+            src={item.img}
+            alt={item.title}
+            className="w-full h-[300px] object-cover 
+              transition-all duration-700 ease-out 
+              group-hover:scale-110 group-hover:brightness-95"
+          />
 
-                {/* DARK OVERLAY */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
-              </div>
-
-              {/* TEXT OUTSIDE */}
-              <div className="mt-4">
-                <h3 className="text-[#5A0F14] font-serif text-lg">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-[#8B7B6B] tracking-[0.15em] mt-1 uppercase">
-                  {item.subtitle}
-                </p>
-              </div>
-
-            </div>
-          ))}
-
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
         </div>
+
+        {/* TEXT */}
+        <div className="mt-4">
+          <h3 className="text-[#5A0F14] font-cormorant text-lg">
+            {item.title}
+          </h3>
+          <p className="text-xs text-[#8B7B6B] tracking-[0.15em] mt-1 uppercase">
+            {item.subtitle}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* DESKTOP → Grid */}
+  <div className="hidden md:grid md:grid-cols-3 gap-10">
+
+    {portfolio.map((item, index) => (
+      <div
+        key={index}
+        className={`group cursor-pointer ${index === 1 ? "translate-y-10" : "-translate-y-10"}`}
+      >
+
+        <div className="relative overflow-hidden rounded-xl">
+
+          <img
+            src={item.img}
+            alt={item.title}
+            className="w-full h-[420px] object-cover 
+              transition-all duration-700 ease-out 
+              group-hover:scale-110 group-hover:brightness-95"
+          />
+
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300"></div>
+        </div>
+
+        <div className="mt-4">
+          <h3 className="text-[#5A0F14] font-cormorant text-lg">
+            {item.title}
+          </h3>
+          <p className="text-xs text-[#8B7B6B] tracking-[0.15em] mt-1 uppercase">
+            {item.subtitle}
+          </p>
+        </div>
+
+      </div>
+    ))}
+
+  </div>
+
+</div>
       </section>
 
       {/*Service SECTION */}
 
-      <Reveal>
+      
   <section id="services" className="bg-[#F5EFE6] py-16 md:py-24 px-4 sm:px-6 text-center">
 
       {/* HEADING */}
@@ -350,11 +385,11 @@ const portfolio = [
 
       </div>
     </section>
-    </Reveal>
+   
     
     {/*Testimonial SECTION */}
 
-    <Reveal>
+    
   <section className="bg-[#F5EFE6] py-12 md:py-16 px-4 sm:px-6 text-center border-t border-[#E8E0D6]">
   <div
   className="max-w-5xl mx-auto relative overflow-hidden"
@@ -428,11 +463,11 @@ const portfolio = [
 
   </div>
 </section>
-</Reveal>
+
 
 {/*CTA SECTION */}
 
-      <Reveal>
+      
   <section className="relative py-16 md:py-28 px-4 sm:px-6 text-center overflow-hidden">
   {/* BASE GRADIENT */}
 <div className="absolute inset-0 bg-gradient-to-br 
@@ -473,8 +508,8 @@ const portfolio = [
 
         </div>
       </section>
-      </Reveal>
     </>
 </PageWrapper>
   );
 }
+ 

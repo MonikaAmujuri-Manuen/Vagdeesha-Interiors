@@ -58,8 +58,8 @@ export default function Navbar() {
                   <span
                     className={`
                       transition-colors duration-300
-                      ${isActive ? "text-[#C89B3C]" : ""}
-                      group-hover:text-[#C89B3C]
+                      ${isActive ? "text-[#5A0F14]" : ""}
+                      group-hover:text-[#5A0F14]
                     `}
                   >
                     {item.name}

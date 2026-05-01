@@ -55,9 +55,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#C89B3C]/10 mix-blend-overlay"></div>
 
       {/* GLASS */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute w-[120%] h-[120%] bg-[linear-gradient(120deg,transparent_40%,rgba(255,255,255,0.08)_50%,transparent_60%)] rotate-6 animate-glassMove"></div>
-      </div>
+      
 
       {/* CONTENT */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 md:px-6 space-y-2 group">
@@ -66,7 +64,7 @@ export default function Hero() {
           EST. 1998
         </p>
 
-        <h1 className="font-serif text-white text-center leading-none">
+        <h1 className="font-cormorant text-white text-center leading-none">
 
           <span className="block animate-textReveal text-3xl sm:text-4xl md:text-7xl tracking-[0.04em] transition-all duration-500 ease-out drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)] group-hover:drop-shadow-[0_10px_40px_rgba(200,155,60,0.25)]">
             Vaagdeesha

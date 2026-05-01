@@ -137,10 +137,10 @@ const [fileName, setFileName] = useState("No file chosen");
 
   return (
 
-    <div className="bg-[#F5EFE6] py-20 px-10 md:px-20">
+    <div className="bg-[#F5EFE6] py-16 md:py-20 px-4 sm:px-6 md:px-20">
           <Navbar />
     <Reveal>
-    <section id="form" className="bg-[#F5EFE6] py-24 px-6">
+    <section id="form" className="bg-[#F5EFE6] py-16 md:py-24 px-4 sm:px-6">
   <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
     {/* LEFT SIDE (FORM) */}
