@@ -7,12 +7,13 @@ export default function EditorialGrid() {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
 
+  {/* PARALLAX 
   // PARALLAX
   useEffect(() => {
     const handleScroll = () => setOffset(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, []); */}
 
   // SCROLL REVEAL
   useEffect(() => {
@@ -33,6 +34,15 @@ export default function EditorialGrid() {
   className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 pb-20 md:pb-28 px-4 md:px-0"
 >
 
+  <div className="
+absolute top-1/2 left-1/2
+-translate-x-1/2 -translate-y-1/2
+w-[900px] h-[400px]
+bg-[#B08D57]/[0.05]
+blur-[160px]
+pointer-events-none
+" />
+
   {/* 🌫️ GRAIN OVERLAY */}
   <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-multiply bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
@@ -41,15 +51,15 @@ export default function EditorialGrid() {
 
     {/* MATERIAL */}
     <div
-      className={`bg-[#EFE7DC] p-6 md:p-12 rounded-2xl min-h-[220px] md:min-h-[280px] flex flex-col justify-center
+      className={`bg-[#1A1A1C] border border-white/[0.05] p-6 md:p-12 rounded-2xl min-h-[220px] md:min-h-[280px] flex flex-col justify-center
       transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      <h3 className="text-xl md:text-[28px] font-serif text-[#5A0F14] mb-3 md:mb-5 leading-snug">
+      <h3 className="text-2xl md:text-[34px] font-serif text-[#F5F1EA] mb-3 md:mb-5 leading-[1.15]">
         Material Integrity
       </h3>
-      <p className="text-sm md:text-[15px] leading-relaxed text-[#7A6A5A] tracking-wide">
+      <p className="text-sm md:text-[15px] leading-loose text-[#A8A29E] tracking-wide">
         We source rare stones and reclaimed woods, treating every surface as
         a canvas for natural textures.
       </p>
@@ -57,7 +67,8 @@ export default function EditorialGrid() {
 
     {/* QUOTE */}
     <div
-      className={`bg-[#6B0F1A] text-[#C89B3C] p-6 md:p-10 rounded-2xl
+      className={`bg-gradient-to-br from-[#1A1A1C] to-[#111112] backdrop-blur-md
+        border border-[#B08D57]/10 text-[#B08D57] p-6 md:p-10 rounded-2xl
       transition-all duration-700 delay-200 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
@@ -65,7 +76,7 @@ export default function EditorialGrid() {
       <p className="italic text-base md:text-lg leading-relaxed">
         "The details are not the details. They make the design."
       </p>
-      <p className="text-[10px] md:text-xs mt-4 md:mt-5 text-[#E5D3C2] tracking-[0.2em]">
+      <p className="text-[10px] md:text-xs mt-4 md:mt-5 text-[#B08D57] tracking-[0.2em]">
         — CHARLES EAMES
       </p>
     </div>
@@ -76,7 +87,7 @@ export default function EditorialGrid() {
   
 <div className="md:col-span-2">
 
-  {/* 📱 MOBILE SWIPE */}
+  {/*  MOBILE SWIPE */}
   <div className="block md:hidden">
     <Swiper spaceBetween={16} slidesPerView={1.2} centeredSlides={true}>
       {[ "/images/p4.png", "/images/p5.png" ].map((img, i) => (
@@ -85,7 +96,7 @@ export default function EditorialGrid() {
             <img
               src={img}
               style={{ transform: `translateY(${offset * 0.03}px)` }}
-              className="h-[260px] w-full object-cover rounded-2xl"
+              className="h-[250px] w-full object-cover rounded-2xl"
             />
 
             {/* SHADOW */}
@@ -97,46 +108,144 @@ export default function EditorialGrid() {
   </div>
 
   {/* 💻 DESKTOP GRID (UNCHANGED LOOK) */}
-  <div className="hidden md:grid grid-cols-2 gap-10">
-    {[ "/images/p4.png", "/images/p5.png" ].map((img, i) => (
-      <div
-        key={i}
-        className={`relative overflow-hidden rounded-2xl group cursor-pointer
-        transition-all duration-700 ${
-          visible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-        }`}
-        style={{ transitionDelay: `${i * 150}ms` }}
-      >
-        <img
-          src={img}
-          style={{ transform: `translateY(${offset * 0.03}px)` }}
-          className="
-            h-[440px] w-full object-cover
-            transition-all duration-[900ms]
-            group-hover:scale-105 group-hover:-translate-y-2
-          "
-        />
+  <div className="hidden md:grid grid-cols-2 gap-8 items-start">
 
-        {/* SHADOW */}
-        <div className="absolute inset-0 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-        group-hover:shadow-[0_30px_80px_rgba(0,0,0,0.25)] transition-all duration-700" />
+  {/* IMAGE CARD */}
+  <div
+    className={`mt-10
+      relative overflow-hidden rounded-2xl group cursor-pointer
+      bg-[#151517]
+      transition-all duration-700
+      ${
+        visible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10"
+      }
+    `}
+  >
+    <img
+      src="/images/p4.png"
+      className="
+        h-[420px]
+        w-full object-cover
+        rounded-[32px]
+        transition-all duration-[900ms]
+        group-hover:scale-[1.03]
+      "
+    />
 
-        {/* LIGHT SWEEP */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
-          <div className="
-            absolute -left-1/2 top-0 w-[200%] h-full
-            bg-gradient-to-r from-transparent via-white/15 to-transparent
-            rotate-12 translate-x-[-100%]
-            group-hover:translate-x-[100%]
-            transition-all duration-[1200ms]
-          " />
-        </div>
-      </div>
-    ))}
+    <div className="
+      absolute inset-0
+      bg-black/20
+      group-hover:bg-black/10
+      transition-all duration-700
+    " />
+
+    <div className="
+      absolute inset-0 rounded-2xl
+      shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+      group-hover:shadow-[0_30px_80px_rgba(0,0,0,0.25)]
+      transition-all duration-700
+    " />
   </div>
 
+  {/* EDITORIAL TEXT PANEL */}
+  <div
+    className={`
+      mt-20
+      h-[420px]
+      rounded-[32px]
+      border border-white/[0.05]
+      bg-gradient-to-br from-[#171719] to-[#111112]
+      p-7 md:p-8
+      flex flex-col justify-between
+      transition-all duration-700 delay-200
+
+      ${
+        visible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10"
+      }
+    `}
+  >
+
+    <div>
+
+      <p className="
+        text-[#B08D57]
+        text-[11px]
+        tracking-[0.35em]
+        mb-5
+      ">
+        DESIGN PHILOSOPHY
+      </p>
+
+      <h3 className="
+        text-3xl md:text-[36px]
+        font-serif
+        text-[#F5F1EA]
+        leading-[1.05]
+        mb-6
+      ">
+        Spaces shaped by light, texture, and restraint.
+      </h3>
+
+      <p className="
+        text-[#A8A29E]
+        leading-[1.7]
+        text-[14px]
+      ">
+        Every project balances emotional warmth with
+        architectural precision — creating interiors
+        that feel timeless rather than trend-driven.
+      </p>
+
+    </div>
+
+    <div className="
+      flex gap-10 pt-8
+      border-t border-white/[0.06]
+    ">
+
+      <div>
+        <p className="
+          text-[#B08D57]
+          text-3xl
+          font-serif
+        ">
+          48+
+        </p>
+
+        <span className="
+          text-[#7E7E81]
+          text-sm
+        ">
+          Luxury Projects
+        </span>
+      </div>
+
+      <div>
+        <p className="
+          text-[#B08D57]
+          text-3xl
+          font-serif
+        ">
+          12
+        </p>
+
+        <span className="
+          text-[#7E7E81]
+          text-sm
+        ">
+          Design Awards
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 </div>
 
 </div>

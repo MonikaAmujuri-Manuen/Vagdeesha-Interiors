@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -372,6 +377,172 @@ html {
   background: #6B0F1A; /* maroon */
 }
 
-::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 5s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.logo-3d-wrapper {
+  perspective: 1200px;
+  position: relative;
+}
+
+.logo-card {
+  width: 100%;
+  height: auto;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate3d 6s linear infinite;
+}
+
+.logo-card::before {
+  content: "";
+  display: block;
+  padding-top: 60%; /* adjust based on logo ratio */
+}
+
+/* BOTH SIDES */
+.logo-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+/* BACK SIDE */
+.logo-face.back {
+  transform: rotateY(180deg);
+}
+
+/* ANIMATION */
+@keyframes rotate3d {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes vaagSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-vaagSlide {
+  animation: vaagSlide 1.8s ease-out forwards;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes float {
+
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+
+}
+
+@keyframes showcaseFade {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.swiper {
+  overflow: visible !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HIDE SCROLLBAR - CHROME, EDGE, SAFARI */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* HIDE SCROLLBAR - FIREFOX */
+html {
+  scrollbar-width: none;
+}
+
+/* HIDE SCROLLBAR - IE/OLD EDGE */
+body {
+  -ms-overflow-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+

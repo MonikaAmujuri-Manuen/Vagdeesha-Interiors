@@ -17,6 +17,21 @@ const projects = [
     title: "Serene Bedroom",
     location: "RESIDENCE — HYDERABAD",
   },
+  {
+    image: "/images/p6.png",
+    title: "Private Pool",
+    location: "PENTHOUSE — BANGALORE",
+  },
+  {
+    image: "/images/p7.png",
+    title: "Luxury Bedroom",
+    location: "RESIDENCE — BANGALORE",
+  },
+  {
+    image: "/images/p8.png",
+    title: "Kitchen Elegance",
+    location: "BUNGALOW — KOCHI",
+  },
 ];
 
 export default function FeaturedCarousel() {
@@ -36,75 +51,124 @@ export default function FeaturedCarousel() {
         if (isHovered) return prev;
         return (prev + 1) % projects.length;
       });
-    }, 4000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [isHovered]);
 
   return (
     <div
-      className="relative max-w-6xl mx-auto mb-16 md:mb-24 px-4 sm:px-6"
+      className="relative max-w-6xl mx-auto mb-24 md:mb-32 px-4 sm:px-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* CAROUSEL */}
       <div
-        id="catalog"
-        className="flex items-center justify-center gap-4 md:gap-8"
+  id="catalog"
+  className="relative h-[420px] flex items-center justify-center overflow-hidden"
+>
+
+  {projects.map((project, i) => {
+
+    let position = "hidden";
+
+if (i === current) {
+  position = "center";
+} else if (
+  i === (current - 1 + projects.length) % projects.length
+) {
+  position = "left";
+} else if (
+  i === (current + 1) % projects.length
+) {
+  position = "right";
+}
+
+    return (
+      <div
+        key={i}
+        className={`
+          absolute transition-all duration-[1400ms]
+          ease-[cubic-bezier(0.22,1,0.36,1)]
+
+          ${position === "center" && `
+            z-20
+            scale-100
+            opacity-100
+            translate-x-0
+          `}
+
+          ${position === "left" && `
+            z-10
+            scale-[0.82]
+            opacity-50
+            -translate-x-[380px]
+          `}
+
+          ${position === "right" && `
+            z-10
+            scale-[0.82]
+            opacity-50
+            translate-x-[380px]
+          `}
+          ${position === "hidden" && `
+  opacity-0
+  scale-50
+  pointer-events-none
+`}
+        `}
       >
 
-        {/* LEFT (hidden on mobile) */}
-        <div className="hidden md:block opacity-40 scale-[0.9] transition-all duration-500">
+        <div className="relative">
+
           <img
-            src={projects[(current - 1 + projects.length) % projects.length].image}
-            className="w-[260px] h-[180px] md:w-[360px] md:h-[240px] object-cover rounded-2xl"
+            src={project.image}
+            className={`
+              object-cover rounded-[32px]
+              transition-all duration-[1000ms]
+
+              ${position === "center"
+                ? "w-[440px] h-[300px]"
+                : "w-[280px] h-[190px]"
+              }
+            `}
           />
-        </div>
 
-        {/* CENTER */}
-        <div className="
-          relative z-20
-          transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-          hover:scale-[1.05] md:hover:scale-[1.08]
-          hover:-translate-y-2 md:hover:-translate-y-3
-          hover:shadow-[0_30px_90px_rgba(0,0,0,0.35)]
-        ">
-          <div key={current} className="animate-fadeIn">
-            <img
-              src={projects[current].image}
-              style={{ transform: `translateY(${offset * 0.04}px)` }}
-              className="
-                w-[100%] max-w-[340px] h-[200px]
-                sm:max-w-[420px] sm:h-[260px]
-                md:w-[620px] md:h-[400px]
-                object-cover rounded-2xl
-                shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-              "
-            />
-          </div>
-
-          {/* GRADIENT */}
-          <div className="absolute bottom-0 left-0 w-full h-[35%] bg-gradient-to-t from-black/40 to-transparent rounded-b-2xl" />
+          {/* OVERLAY */}
+          <div className="
+            absolute bottom-0 left-0
+            w-full h-[35%]
+            bg-gradient-to-t
+            from-black/50 to-transparent
+            rounded-b-[32px]
+          " />
 
           {/* TEXT */}
-          <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 text-white z-10">
-            <p className="text-[10px] md:text-xs tracking-widest text-[#E6C57A] mb-1">
-              {projects[current].location}
-            </p>
-            <h3 className="text-lg md:text-3xl font-serif">
-              {projects[current].title}
-            </h3>
-          </div>
-        </div>
+          {position === "center" && (
+            <div className="absolute bottom-6 left-6 text-white z-10">
 
-        {/* RIGHT (hidden on mobile) */}
-        <div className="hidden md:block opacity-40 scale-[0.9] transition-all duration-500">
-          <img
-            src={projects[(current + 1) % projects.length].image}
-            className="w-[260px] h-[180px] md:w-[360px] md:h-[240px] object-cover rounded-2xl"
-          />
+              <p className="
+                text-xs tracking-[0.25em]
+                text-[#B08D57] mb-2
+              ">
+                {project.location}
+              </p>
+
+              <h3 className="
+                text-3xl font-cormorant
+                text-[#F5F1EA]
+              ">
+                {project.title}
+              </h3>
+
+            </div>
+          )}
+
         </div>
       </div>
+    );
+  })}
+</div>
 
       {/* ARROWS */}
       <button

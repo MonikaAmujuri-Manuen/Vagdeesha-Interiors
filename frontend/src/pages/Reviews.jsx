@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/pagination";
+
 
 export default function Reviews() {
   const navigate = useNavigate();
@@ -40,9 +39,33 @@ function useInView() {
 
   return [ref, isVisible];
 }
+
+const transformations = [
+  {
+    title: "Modern Heritage Residence",
+    image: "/images/transformation1.png",
+  },
+  {
+    title: "Luxury Living Transformation",
+    image: "/images/transformation2.png",
+  },
+  {
+    title: "Contemporary Villa Upgrade",
+    image: "/images/transformation3.png",
+  },
+  {
+    title: "Minimalist Interior Revival",
+    image: "/images/transformation4.png",
+  },
+  {
+    title: "luxury reading lounge",
+    image: "/images/transformation5.png",
+  },
+
+];
   return (
 
-    <div className="bg-[#F5EFE6] py-16 md:py-20 px-4 sm:px-6 md:px-20">
+    <div className="bg-[#0F0F10] overflow-hidden">
       <Navbar />
 
     {/*Hero SECTION */}
@@ -50,63 +73,240 @@ function useInView() {
     <section
   ref={heroRef}
   className={`
-    text-center py-16 md:py-28 px-4 sm:px-6 bg-[#F5EFE6]
+    relative
+    min-h-screen
+    overflow-hidden
+
+    flex items-center justify-center
+    text-center
+
+    pt-32 sm:pt-36 md:pt-52
+    pb-24 md:pb-32
+
     transition-all duration-1000 ease-out
-    ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+
+    ${heroVisible
+      ? "opacity-100 translate-y-0"
+      : "opacity-0 translate-y-10"}
   `}
 >
-      
 
-      <p className="tracking-[0.3em] text-[#C89B3C] text-xs md:text-sm mb-3 md:mb-4">
-        CLIENT REVIEWS
-      </p>
+  {/* BACKGROUND IMAGE */}
+  <img
+    src="/images/review-hero.png"
+    alt=""
+    className="
+      absolute inset-0
+      w-full h-full
+      object-cover
 
-      <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#5A0F14] mb-4 md:mb-6">
-        What Our Clients Say
-      </h1>
+      scale-[1.03]
 
-      <p className="max-w-2xl mx-auto text-[#7A6A5A] text-sm md:text-base">
-        Experiences from clients who trusted us to design their spaces,
-        reflecting our commitment to architectural heritage and modern minimalism.
-      </p>
-    </section>
+      brightness-[0.58]
+    "
+  />
+
+  {/* DARK OVERLAY */}
+  <div
+    className="
+      absolute inset-0
+      bg-black/35
+    "
+  />
+
+  {/* SOFT VIGNETTE */}
+  <div
+    className="
+      absolute inset-0
+
+      bg-gradient-to-b
+      from-black/25
+      via-transparent
+      to-black/30
+    "
+  />
+
+  {/* BRONZE GLOW */}
+  <div
+    className="
+      absolute left-1/2 top-1/2
+      -translate-x-1/2 -translate-y-1/2
+
+      w-[320px]
+sm:w-[520px]
+md:w-[700px]
+
+h-[220px]
+sm:h-[300px]
+md:h-[400px]
+
+      bg-[#B08D57]/[0.10]
+
+      blur-[70px]
+      rounded-full
+    "
+  />
+
+  {/* CONTENT */}
+  <div className="
+  relative z-10
+  w-full
+  px-6 sm:px-10
+  text-center
+">
+  <div className="max-w-5xl mx-auto">
+
+    {/* LABEL */}
+    <p
+      className="
+        text-[#B08D57]
+
+        tracking-[0.4em]
+        uppercase
+
+        text-xs md:text-sm
+
+        mb-8
+      "
+    >
+      Client Reviews
+    </p>
+
+    {/* HEADING */}
+    <h1
+      className="
+  text-[40px]
+sm:text-[56px]
+md:text-[88px]
+
+  leading-[1]
+  tracking-[-0.04em]
+
+  font-serif
+  font-light
+
+  text-[#F5F1EA]
+
+  drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]
+
+  mb-6 sm:mb-10
+">
+      Spaces They
+      <br />
+      Truly Feel.
+    </h1>
+
+    {/* DESCRIPTION */}
+    <p
+      className="
+        max-w-3xl
+        mx-auto
+
+        text-[#D1CCC7]
+
+        text-[14px]
+sm:text-[16px]
+md:text-[20px]
+
+        leading-[1.9]
+
+        font-light
+
+        mb-16
+      "
+    >
+      Every interior we create is designed to evoke
+      warmth, emotion, and timeless architectural presence —
+      reflected beautifully through the voices
+      of our clients.
+    </p>
+
+    {/* STATS */}
+    <div className="
+      flex flex-wrap
+      justify-center
+      gap-8 sm:gap-12 md:gap-20
+    ">
+
+      <div>
+        <h3 className="
+          text-3xl sm:text-4xl md:text-5xl
+          font-serif
+          text-[#F5F1EA]
+          mb-2
+        ">
+          120+
+        </h3>
+
+        <p className="
+          text-[#C6B8A5]
+          text-xs
+
+          tracking-[0.3em]
+          uppercase
+        ">
+          Luxury Projects
+        </p>
+      </div>
+
+      <div>
+        <h3 className="
+          text-4xl md:text-5xl
+          font-serif
+          text-[#F5F1EA]
+          mb-2
+        ">
+          98%
+        </h3>
+
+        <p className="
+          text-[#C6B8A5]
+          text-xs
+
+          tracking-[0.3em]
+          uppercase
+        ">
+          Client Satisfaction
+        </p>
+      </div>
+
+      <div>
+        <h3 className="
+          text-4xl md:text-5xl
+          font-serif
+          text-[#F5F1EA]
+          mb-2
+        ">
+          10+
+        </h3>
+
+        <p className="
+          text-[#C6B8A5]
+          text-xs
+
+          tracking-[0.3em]
+          uppercase
+        ">
+          Years Experience
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+</section>
 
     {/*Featured Testimonials SECTION */}
 
-    <section
-  ref={featuredRef}
-  className={`
-    py-16 md:py-28 px-4 sm:px-6 text-center bg-[#EFE7DC]
-    transition-all duration-1000 ease-out
-    ${featuredVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-  `}
->
-      <div className="max-w-4xl mx-auto">
-        <div className="text-6xl text-[#E5D9CC] mb-6"></div>
-
-        <p className="text-xl sm:text-2xl md:text-4xl font-serif text-[#5A0F14] leading-relaxed">
-          "The team at Vaagdeesha Interiors transformed our heritage apartment into a modern 
-          scantuary without losing it's original character. Their eye for detail and mastery of 
-          texture is truly unparalleled in the industry."
-        </p>
-
-        <p className="mt-6 md:mt-8 text-[#5A0F14] font-medium">
-          Julian Throne
-        </p>
-
-        <p className="text-xs tracking-widest text-[#C89B3C]">
-          HERITAGE PENTHOUSE
-        </p>
-      </div>
-    </section>
-
-    <section className="py-16 md:py-24 px-4 sm:px-6 bg-[#F5EFE6]">
+    <section className="py-16 md:py-24 px-4 sm:px-6 md:px-20 bg-[#0F0F10]">
 
       <div className="md:hidden">
   <Swiper
     modules={[Autoplay, Pagination]}
     spaceBetween={16}
-    slidesPerView={1.1}
+    slidesPerView={1.02}
     centeredSlides
     loop={false}
     autoplay={{
@@ -136,14 +336,16 @@ function useInView() {
       }
     ].map((item, i) => (
       <SwiperSlide key={i}>
-        <div className="bg-white p-6 rounded-xl border border-[#E5D9CC]">
+        <div className="bg-[#1A1A1C]/80
+backdrop-blur-xl
+border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
           <div className="text-[#C89B3C] mb-2">★★★★★</div>
 
-          <p className="text-[#7A6A5A] text-sm mb-4">
+          <p className="text-[#7A6A5A] text-[13px] sm:text-sm mb-4">
             {item.comment}
           </p>
 
-          <p className="text-[#5A0F14] font-medium">
+          <p className="text-[#F5F1EA] font-medium">
             {item.client}
           </p>
 
@@ -158,12 +360,11 @@ function useInView() {
 </div>
 
       <div
-  ref={cardsRef}
-  className={`
+  
+  className="
     group hidden md:grid max-w-6xl mx-auto md:grid-cols-3 gap-8
-    transition-all duration-1000 ease-out
-    ${cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-  `}
+    transition-opacity transition-transform duration-700 ease-out
+    "
 >
         {[
           { 
@@ -184,275 +385,572 @@ function useInView() {
          
         ].map((item,i)=>(
           <div
-          key={i}
-          className="bg-white p-8 rounded-xl 
-          border border-[#E5D9CC]
-          transition-all duration-500 ease-out
-          
-          group hover:text-[#7A0F14]
-          hover:border-[#7A0F14]
-          hover:bg-[#FFF9F8]
-          hover:shadow-[0_20px_50px_rgba(122,15,20,0.15)]
-          hover:-translate-y-2
-          style={{ transitionDelay: `${i * 150}ms` }}"
-          >
-            <div className="text-[#C89B3C] group-hover:text-[#7A0F14] transition">★★★★★</div>
+  key={i}
+  className="
+    relative overflow-hidden
 
-            <p className="text-[#7A6A5A] mb-6">
-              {item.comment}
-            </p>
+    bg-white/[0.03]
+    backdrop-blur-sm
 
-            <p className="text-[#5A0F14] font-medium">
-              {item.client}
-        </p>
+    border border-white/[0.06]
 
-        <p className="text-xs text-[#A89A8A] uppercase">
-          {item.role}
-        </p>
-        </div>   
+    p-6 sm:p-8 lg:p-10
+
+    rounded-[28px]
+
+    transition-opacity transition-transform duration-700 ease-out
+
+    hover:-translate-y-2
+    hover:border-[#B08D57]/30
+
+    hover:bg-white/[0.045]
+
+    shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+
+    group
+  "
+>
+
+  {/* GOLD GLOW */}
+  <div
+    className="
+      absolute -top-20 -right-20
+      w-[180px] h-[180px]
+
+      bg-[#B08D57]/[0.08]
+      blur-[40px]
+
+      opacity-0
+      group-hover:opacity-100
+
+      transition duration-700
+    "
+  />
+
+  {/* STARS */}
+  <div
+    className="
+      relative z-10
+
+      text-[#B08D57]
+
+      tracking-[0.2em]
+      text-sm
+
+      mb-8
+    "
+  >
+    ★★★★★
+  </div>
+
+  {/* REVIEW */}
+  <p
+    className="
+      relative z-10
+
+      text-[#A8A29E]
+
+      leading-[1.9]
+
+      text-[15px] sm:text-[16px]
+
+      mb-10
+    "
+  >
+    {item.comment}
+  </p>
+
+  {/* CLIENT */}
+  <div className="relative z-10">
+
+    <p
+      className="
+        text-[#F5F1EA]
+
+        text-[20px]
+        font-medium
+
+        mb-1
+      "
+    >
+      {item.client}
+    </p>
+
+    <p
+      className="
+        text-[#B08D57]
+
+        text-xs
+        tracking-[0.28em]
+        uppercase
+      "
+    >
+      {item.role}
+    </p>
+
+  </div>
+
+</div>
         ))}
       </div>
     </section>
 
-    <section
-  ref={gridRef}
-  className={`
-    py-16 md:py-24 px-4 sm:px-6 bg-[#EFE7DC]
-    transition-all duration-1000 ease-out
-    ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-  `}
->
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 md:gap-8">
 
-    {/* BIG */}
-    <div className="md:col-span-2 bg-white p-6 md:p-10 rounded-xl">
-      <div className="text-[#C89B3C] mb-4">★★★★★</div>
-      <p className="text-lg md:text-2xl font-serif text-[#5A0F14]">
-        "The team at Vaagdeesha Interiors transformed our heritage apartment to modern scantuary without losing it's 
-        original character. Their eye for detail and mastery of texture is truly unparalleled in the industry."
-      </p>
+<section className="relative py-20 md:py-32 px-4 sm:px-6 bg-[#0F0F10] overflow-hidden">
 
-      <div className="mt-6 flex items-center gap-4">
-        
-        <div>
-          <p className="text-[#5A0F14] font-medium">Julian Thorne</p>
-          <p className="text-xs text-[#A89A8A]">Founder</p>
-        </div>
-      </div>
-    </div>
-
-    {/* SMALL */}
-    <div className="bg-[#F5EFE6] p-6 md:p-8 rounded-xl">
-      <div className="text-[#C89B3C] mb-4">★★</div>
-      <p className="text-sm md:text-base text-[#7A6A5A]">
-        "Minimalism is often cold, but Vaagdeesha brings a warmth that is rare. They curated every piece like it was for gallery."
-      </p>
-
-      <p className="mt-6 text-[#5A0F14] font-medium">Elara Vance</p>
-      <p className="text-xs text-[#A89A8A]">PRIVATE CLIENT</p>
-    </div>
-
-  </div>
-</section>
-
-<section className="py-16 md:py-24 px-4 sm:px-6 bg-[#F5EFE6]">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-
-<div
-  ref={imgRef}
-  className={`
-    relative overflow-hidden rounded-md
-    transition-all duration-500 ease-out
-
-    ${imgVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-
-    hover:-translate-y-2
-    hover:shadow-[0_20px_50px_rgba(122,15,20,0.15)]
-    cursor-pointer
-  `}
->
-  <img
-    src="/images/review.png"
-    className={`
-      w-full h-[260px] sm:h-[360px] md:h-[480px] object-cover 
-      transition-transform duration-[2000ms] ease-out
-      ${imgVisible ? "scale-100" : "scale-110"}
-    `}
+  {/* AMBIENT GLOW */}
+  <div
+    className="
+      absolute top-0 left-1/2 -translate-x-1/2
+      w-[900px] h-[500px]
+      bg-[#B08D57]/[0.05]
+      blur-[70px]
+      pointer-events-none
+    "
   />
 
-  {/* overlay */}
-  <div className="absolute inset-0 bg-gradient-to-t from-[#5A0F14]/60 to-transparent" />
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
 
-  {/* text */}
-  <div className="absolute bottom-6 left-6 text-white">
-    <p className="italic text-sm mb-1">
-      "A masterclass in modern architectural heritage."
-    </p>
-    <span className="text-xs tracking-widest opacity-80">
-      — ARCHITECTURAL DIGEST
-    </span>
-  </div>
-</div>
-
-
+    {/* IMAGE SIDE */}
     <div
-  ref={cardRef}
-  className={`
-    bg-[#EFE7DC] p-6 md:p-10 rounded-md 
+      ref={imgRef}
+      className={`
+        relative overflow-hidden
 
-    transition-all duration-1000 ease-out delay-200
+        border border-white/[0.06]
 
-    ${cardVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-  `}
->
+        bg-white/[0.03]
+        backdrop-blur-sm
 
-  <div className="flex items-center gap-3 mb-3">
-    <div className="w-8 h-8 rounded-full bg-[#E5D9CC] flex items-center justify-center text-xs font-semibold text-[#5A0F14]">
-      MB
+        transition-opacity transition-transform duration-700 ease-out
+
+        ${imgVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10"
+        }
+
+        group
+      `}
+    >
+
+      <img
+        src="/images/review.png"
+        className={`
+          w-full
+          h-[320px] sm:h-[420px] md:h-[560px]
+
+          object-cover
+
+          transition-transform duration-[2200ms] ease-out
+
+          group-hover:scale-105
+
+          ${imgVisible ? "scale-100" : "scale-110"}
+        `}
+      />
+
+      {/* DARK OVERLAY */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-t
+          from-black/80
+          via-black/20
+          to-transparent
+        "
+      />
+
+      {/* CONTENT */}
+      <div className="absolute bottom-8 left-8 right-8">
+
+        <p
+          className="
+            text-[#F5F1EA]
+            italic
+            text-lg
+            md:text-xl
+            leading-relaxed
+            mb-3
+          "
+        >
+          "A masterclass in modern architectural heritage."
+        </p>
+
+        <span
+          className="
+            text-[#B08D57]
+            text-xs
+            tracking-[0.3em]
+            uppercase
+          "
+        >
+          — Architectural Digest
+        </span>
+
+      </div>
+
     </div>
 
-    <div>
-      <h3 className="text-sm font-semibold text-[#5A0F14]">
-        Marcus Bennett
-      </h3>
-      <div className="text-[#C89B3C] text-sm">★★★★★</div>
+    {/* REVIEW CARD */}
+    <div
+      ref={cardRef}
+      className={`
+        relative overflow-hidden
+
+        bg-white/[0.03]
+        backdrop-blur-sm
+
+        border border-white/[0.06]
+
+        p-6 sm:p-8 md:p-12
+
+        transition-opacity transition-transform duration-700 ease-out
+
+        ${cardVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10"
+        }
+      `}
+    >
+
+      {/* GOLD GLOW */}
+      <div
+        className="
+          absolute -top-20 -right-20
+          w-[220px] h-[220px]
+          bg-[#B08D57]/[0.08]
+          blur-[50px]
+        "
+      />
+
+      <div className="relative z-10">
+
+        {/* CLIENT */}
+        <div className="flex items-center gap-4 mb-8">
+
+          <div
+            className="
+              w-12 h-12
+              rounded-full
+
+              bg-[#B08D57]/15
+
+              flex items-center justify-center
+
+              text-sm
+              font-semibold
+
+              text-[#F5F1EA]
+            "
+          >
+            MB
+          </div>
+
+          <div>
+
+            <h3
+              className="
+                text-[#F5F1EA]
+                text-lg
+                font-medium
+              "
+            >
+              Marcus Bennett
+            </h3>
+
+            <div
+              className="
+                text-[#B08D57]
+                text-sm
+                tracking-[0.2em]
+              "
+            >
+              ★★★★★
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* REVIEW */}
+        <p
+          className="
+            text-[#A8A29E]
+
+            text-[15px]
+            sm:text-[16px]
+            md:text-[17px]
+            leading-[2]
+
+            mb-10
+          "
+        >
+          "From the initial sketch to the final placement of the
+          custom-woven rugs, the journey was seamless. They don’t
+          just design rooms; they curate a lifestyle that feels
+          both historic and incredibly fresh."
+        </p>
+
+        {/* LINK */}
+        <a
+          href="#"
+          className="
+            inline-flex items-center gap-3
+
+            text-[#B08D57]
+
+            text-sm
+            tracking-[0.25em]
+            uppercase
+
+            transition duration-500
+
+            hover:text-[#F5F1EA]
+          "
+        >
+          View Project Case Study
+          <span>→</span>
+        </a>
+
+      </div>
+
     </div>
+
   </div>
 
-  <p className="text-sm md:text-base text-[#7A6A5A] leading-relaxed mb-6">
-    "From the initial sketch to the final placement of the custom-woven rugs,
-    the journey was seamless. They don’t just design rooms; they curate a lifestyle
-    that feels both historic and incredibly fresh."
-  </p>
+</section>
 
-  <a
-    href="#"
-    className="text-[#C89B3C] text-sm tracking-wide font-medium hover:text-[#5A0F14] transition"
+
+    <section className="relative py-20 md:py-25 overflow-hidden bg-[#0F0F10]">
+
+      {/* AMBIENT GLOW */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(176,141,87,0.08),transparent_60%)]" />
+
+      {/* TOP CONTENT */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center mb-14">
+
+        <p className="text-[#B08D57] uppercase tracking-[0.35em] text-xs mb-5">
+          Before & After
+        </p>
+
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#F5F1EA] leading-tight mb-6">
+          Spaces Reimagined
+        </h2>
+
+        <p className="max-w-2xl mx-auto text-[#A8A29E] leading-relaxed text-sm md:text-base">
+          Witness the transformation of interiors through thoughtful design,
+          refined materiality, and timeless architectural elegance.
+        </p>
+
+      </div>
+
+      {/* SLIDER */}
+      <div className="relative">
+
+        <Swiper
+          modules={[Autoplay]}
+          slidesPerView={1.05}
+          centeredSlides={true}
+          loop={true}
+          speed={900}
+          spaceBetween={16}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            768: {
+              slidesPerView: 1.6,
+            },
+            1200: {
+              slidesPerView: 2.0,
+            },
+          }}
+          className="!overflow-visible"
+        >
+
+          {transformations.map((item, index) => (
+
+            <SwiperSlide key={index}>
+
+  <div
+    className="
+      group relative overflow-hidden
+      border border-white/[0.06]
+      bg-white/[0.03]
+      backdrop-blur-xl
+      shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+    "
   >
-    VIEW PROJECT CASE STUDY →
-  </a>
 
-</div>
-</div>
-</section>
+    {/* SINGLE SPLIT IMAGE */}
+    <div className="relative overflow-hidden h-[200px] sm:h-[240px] md:h-[320px]">
 
-<section
-  ref={lastCardsRef}
-  className={`
-    py-16 md:py-24 px-4 sm:px-6 bg-[#EFE7DC]
-    transition-all duration-1000 ease-out
-    ${lastCardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-  `}
->
-  <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+      <img
+        src={item.image}
+        alt=""
+        className="
+          w-full h-full object-cover
+          transition-transform duration-[2500ms]
+          group-hover:scale-105
+        "
+      />
 
-    {/* CARD 1 */}
-    <div
-  className="
-    bg-white p-6
-    border border-[#E5D9CC]
-    transition-all duration-300 ease-out
-    hover:border-[#7A0F14]
-    hover:shadow-[0_10px_30px_rgba(122,15,20,0.15)]
-    hover:-translate-y-1
-    hover:cursor-pointer
-  "
->
-      "The studio's approach to light is what sets them apart. Our home feels alive at every hour of the day."
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-      <p className="mt-6 text-[#5A0F14] font-medium">Sophia Chen</p>
-      <p className="text-xs text-[#A89A8A]">DESIGN DIRECTOR, MUSE</p>
-    </div>
+      {/* CENTER DIVIDER */}
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-full bg-white/20" />
 
-    {/* CARD 2 */}
-    <div
-  className="
-    bg-[#F5EFE6] p-6
-    border border-[#E5D9CC]
-    transition-all duration-300 ease-out
-    hover:border-[#7A0F14]
-    hover:shadow-[0_10px_30px_rgba(122,15,20,0.15)]
-    hover:-translate-y-1
-    hover:cursor-pointer
-  "
->
-      "Sophisticated, disciplined, and profoundly beautiful. Every interaction with Vaagdeesha was a pleasure."
-      
-      <p className="mt-6 text-[#5A0F14] font-medium">Oliver Saint</p>
-      <p className="text-xs text-[#A89A8A]">PRIVATE COLLECTOR</p>
-    </div>
+      {/* BEFORE LABEL */}
+      <div className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6">
 
-    {/* CARD 3 */}
-    <div
-  className="
-    bg-[#7A0F14] text-[#D4AF37] p-6
-    border border-[#7A0F14]
-    transition-all duration-300 ease-out
-    hover:border-[#D4AF37]
-    hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]
-    hover:-translate-y-1
-    hover:cursor-pointer
-  "
->
-      "Exceeded all expectations. Their project management is as meticulous as their design aesthetic."
+        <p className="text-[#B08D57] text-[9px] tracking-[0.35em] uppercase mb-2">
+          Before
+        </p>
 
-      <p className="mt-6 text-[#5A0F14] font-medium">Elena Rodriguez</p>
-      <p className="text-xs text-[#A89A8A]">Real Estate Developer</p>
+        <h3 className="text-[#F5F1EA] text-[16px] sm:text-lg md:text-2xl font-serif">
+          Outdated Space
+        </h3>
+
+      </div>
+
+      {/* AFTER LABEL */}
+      <div className="absolute right-4 sm:right-6 bottom-4 sm:bottom-6 text-right">
+
+        <p className="text-[#B08D57] text-[9px] tracking-[0.35em] uppercase mb-2">
+          After
+        </p>
+
+        <h3 className="text-[#F5F1EA] text-[16px] sm:text-lg md:text-2xl font-serif">
+          Refined Luxury
+        </h3>
+
+      </div>
+
     </div>
 
   </div>
-</section>
+
+</SwiperSlide>
+
+          ))}
+
+        </Swiper>
+
+      </div>
+
+    </section>
+  
 
 <section
-  ref={ctaRef}
+
   className={`
-    py-20 md:py-28 px-4 text-center bg-[#F5EFE6]
-    transition-all duration-1000 ease-out
-    ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+    relative overflow-hidden
+    py-24 md:py-32 px-4 sm:px-6
+    bg-[#0F0F10]
   `}
 >
-  <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#5A0F14] mb-4">
-    Ready to Begin Your Narrative?
-  </h2>
 
-  <p className="text-sm md:text-base text-[#7A6A5A] mb-6 md:mb-8">
-    Join our list of discerning clients and let us transform your vision.
-  </p>
+  {/* ambient glow */}
+  <div className="
+    absolute inset-0
+    bg-[radial-gradient(circle_at_center,rgba(176,141,87,0.10),transparent_60%)]
+  " />
 
-  <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+  {/* noise texture */}
+  <div className="absolute inset-0 opacity-[0.03]">
+    <img
+      src="/images/noise.jpg"
+      className="w-full h-full object-cover"
+    />
+  </div>
 
-    {/* PRIMARY BUTTON */}
-    <button onClick={() => navigate("/contact#form")}
-      className="
-        bg-[#7A0F14] text-white px-6 py-3
-        transition-all duration-300 ease-out
+  <div className="
+    relative z-10
+    max-w-4xl mx-auto
+    text-center
 
-        hover:-translate-y-1
-        hover:shadow-[0_12px_30px_rgba(122,15,20,0.25)]
-        hover:bg-[#8E1419]
-      "
-    >
-      START A CONVERSATION
-    </button>
+    bg-white/[0.03]
+    backdrop-blur-xl
 
-    {/* SECONDARY BUTTON */}
-    <button
-      className="group
-        text-[#7A0F14] relative
-        transition-all duration-300
+    border border-white/[0.06]
 
-        hover:-translate-y-1
-      "
-    >
-      DOWNLOAD PORTFOLIO
+    rounded-[32px]
 
-      {/* subtle underline animation */}
-      <span className="
-        absolute left-0 -bottom-1 w-0 h-[2px] bg-[#7A0F14]
-        transition-all duration-300
-        group-hover:w-full
-      " />
-    </button>
+    px-5 sm:px-12
+    py-12 sm:py-16 md:py-20
+    shadow-[0_20px_80px_rgba(0,0,0,0.45)]
+  ">
+
+    {/* small label */}
+    <p className="
+      text-[#B08D57]
+      text-xs
+      tracking-[0.35em]
+      uppercase
+      mb-6
+    ">
+      Begin Your Journey
+    </p>
+
+    {/* heading */}
+    <h2 className="
+      text-3xl sm:text-4xl md:text-6xl
+      font-serif
+      text-[#F5F1EA]
+      leading-[1]
+      mb-6
+    ">
+      Ready to Create
+      <br />
+      Something Timeless?
+    </h2>
+
+    {/* description */}
+    <p className="
+      max-w-2xl mx-auto
+      text-[#A8A29E]
+      text-sm sm:text-base
+      leading-[1.9]
+      mb-10
+    ">
+      From intimate residences to grand architectural experiences,
+      we craft interiors that embody warmth, refinement,
+      and enduring sophistication.
+    </p>
+
+    {/* buttons */}
+    <div className="
+      flex flex-col sm:flex-row
+      justify-center items-center
+      gap-5
+    ">
+
+      {/* primary */}
+      <button
+        onClick={() => navigate("/contact#form")}
+        className="
+          bg-[#B08D57]
+          text-black
+
+          px-6 sm:px-8
+          py-3 sm:py-4
+          rounded-full
+
+          text-sm tracking-[0.2em]
+
+          transition-all duration-500
+
+          hover:bg-[#C8A46B]
+          hover:scale-[1.03]
+          hover:shadow-[0_10px_40px_rgba(176,141,87,0.35)]
+        "
+      >
+        START A CONVERSATION
+      </button>
+
+    </div>
 
   </div>
 </section>

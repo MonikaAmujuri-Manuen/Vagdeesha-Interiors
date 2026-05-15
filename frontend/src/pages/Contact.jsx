@@ -135,149 +135,384 @@ const [fileName, setFileName] = useState("No file chosen");
   }
 };
 
+const inputStyle = `
+  w-full
+
+  bg-white/[0.04]
+  border border-white/[0.08]
+
+  text-[#F5F1EA]
+  placeholder:text-[#6F6F73]
+
+  backdrop-blur-xl
+
+  px-4
+py-3 sm:py-3.5
+
+  rounded-xl
+
+  outline-none
+
+  focus:border-[#B08D57]
+  focus:bg-white/[0.06]
+
+  transition-all duration-300
+
+  autofill:bg-transparent
+`;
+
+const labelStyle = `
+  block
+  text-xs
+  tracking-[0.22em] sm:tracking-[0.28em]
+  text-[#B08D57]
+  uppercase
+  mb-3
+`;
+
   return (
 
-    <div className="bg-[#F5EFE6] py-16 md:py-20 px-4 sm:px-6 md:px-20">
+    <div className="bg-[#0F0F10] text-[#F5F1EA] overflow-hidden">
           <Navbar />
-    <Reveal>
-    <section id="form" className="bg-[#F5EFE6] py-16 md:py-24 px-4 sm:px-6">
-  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+    
+    <section
+  id="form"
+  className="
+    relative
+    overflow-hidden
+    py-20 sm:py-24 md:py-32
+    px-4 sm:px-6
+    bg-[#0F0F10]
+  "
+>
 
-    {/* LEFT SIDE (FORM) */}
-    <div>
+  {/* GOLD GLOW */}
+  <div
+    className="
+      absolute
+      top-20 left-1/2
+      -translate-x-1/2
 
-      <p className="tracking-[0.25em] text-xs text-[#7A6A5A] mb-4">
-        CONTACT US
+      w-[320px]
+sm:w-[500px]
+md:w-[700px]
+
+h-[220px]
+sm:h-[300px]
+md:h-[400px]
+
+      bg-[#B08D57]/10
+      blur-[140px]
+    "
+  />
+
+  {/* DARK OVERLAY */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1C] to-[#0F0F10]" />
+
+  <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[0.8fr_1fr] gap-14 md:gap-20 xl:gap-28 items-start">
+
+    {/* LEFT SIDE */}
+    <div className="pt-2 md:pt-6">
+
+      <p
+        className="
+          text-[#B08D57]
+          tracking-[0.35em]
+          uppercase
+          text-xs
+          mb-6
+        "
+      >
+        Contact Us
       </p>
 
-      <h2 className="text-5xl font-serif text-[#5A0F14] leading-tight mb-6">
-        Let’s Design <br /> Your Space
-      </h2>
+      <h1
+        className="
+          text-[42px]
+          sm:text-[54px]
+          md:text-[76px]
+          leading-[0.95]
+          tracking-[-0.04em]
+          font-serif
+          text-[#F5F1EA]
+          mb-8
+        "
+      >
+        Let’s Design
+        <br />
+        Your Space
+      </h1>
 
-      <p className="text-[#7A6A5A] mb-10 max-w-md">
-        Share your requirements and our team will get in touch with you
-        to curate your vision.
+      <p
+        className="
+          text-[#A8A29E]
+          text-[15px]
+          sm:text-[16px]
+          md:text-[17px]
+          leading-[1.9]
+          max-w-md
+          mb-10 sm:mb-14
+        "
+      >
+        Share your vision with us and our team will
+        craft interiors that feel timeless, refined,
+        and deeply personal.
       </p>
 
-      {/* FORM */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      {/* CONTACT DETAILS */}
+      <div className="space-y-8 sm:space-y-10">
 
-        
-              {/* ROW 1 */}
-              <div className="grid grid-cols-2 gap-5 mb-5">
+        <div>
+          <p className="text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2">
+            Email
+          </p>
 
-                <div>
-                  <label className="labelStyle">FULL NAME*</label>
-                  <input 
-                  name = "name"
-                  value={formData.name} 
-                  onChange={handleChange}
-                  placeholder="e.g. Rahul Sharma"
-                  className="inputStyle"
-                  />
-                </div>
+          <p className="text-[#F5F1EA] text-base sm:text-lg">
+            hello@vaagdeesha.com
+          </p>
+        </div>
 
-                <div>
-                  <label className="labelStyle">PHONE NUMBER*</label>
-                  <input 
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+91 00000 00000" 
-                  className="inputStyle" 
-                  />
-                </div>
+        <div>
+          <p className="text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2">
+            Phone
+          </p>
 
-              </div>
+          <p className="text-[#F5F1EA] text-base sm:text-lg">
+            +91 98765 43210
+          </p>
+        </div>
 
-              {/* ROW 2 */}
-              <div className="grid grid-cols-2 gap-5 mb-5">
+        <div>
+          <p className="text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2">
+            Studio
+          </p>
 
-                <div>
-                  <label className="labelStyle">EMAIL*</label>
-                  <input 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="email@address.com" 
-                  className="inputStyle" 
-                  />
-                </div>
+          <p className="text-[#F5F1EA] text-base sm:text-lg leading-relaxed">
+            Hyderabad, India
+          </p>
+        </div>
 
-                <div>
-                  <label className="labelStyle">LOCATION</label>
-                  <input 
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  placeholder="City / Area" 
-                  className="inputStyle" 
-                  />
-                </div>
+      </div>
 
-              </div>
+    </div>
 
-              {/* FILE */}
-              <div className="mb-6">
-                <p className="text-xs tracking-widest text-[#7A6A5A] mb-2">
-                  UPLOAD HOUSE PLAN (PDF)
-                </p>
+    {/* RIGHT SIDE FORM */}
+    <div
+      className="
+        relative
+        overflow-hidden
 
-                <div className="flex items-center justify-between border border-[#E5D9CC] px-4 py-3 bg-white">
+        bg-white/[0.03]
+        backdrop-blur-2xl
 
-                  {/* BUTTON */}
-                  <button
-                    type="button"
-                    onClick={() => fileRef.current.click()}
-                    className="border border-[#C89B3C] px-4 py-2 text-sm text-[#5A0F14] hover:bg-[#C89B3C]/10"
-                  >
-                    SELECT PDF
-                  </button>
+        border border-white/[0.06]
 
-                  {/* FILE NAME */}
-                  <span className="text-sm text-[#A89A8A] truncate max-w-[200px]">
-                    {fileName}
-                  </span>
+        rounded-[24px] sm:rounded-[32px]
 
-                  {/* HIDDEN INPUT */}
-                  <input
-                    type="file"
-                    accept="application/pdf"
-                    ref={fileRef}
-                    className="hidden"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
+        p-5 sm:p-8 md:p-12
 
-                      if (file) {
-                        setFileName(file.name);
-                        setFormData({
-                          ...formData,
-                          file: file
-                        });
-                      }
-                    }}
-                  />
-                </div>
+        shadow-[0_20px_80px_rgba(0,0,0,0.45)]
+      "
+    >
 
-              </div>
+      {/* BRONZE GLOW */}
+      <div
+        className="
+          absolute
+          top-0 right-0
 
-              {/* TEXTAREA */}
-              <div>
-                <label className="labelStyle">DETAILS</label>
-              <textarea
-                name="details"
-                value={formData.details}
-                onChange={handleChange}
-                placeholder="Tell us about your space and aesthetic preferences..."
-                className="w-full border border-[#E5D9CC] bg-white px-4 py-3 h-[120px] text-sm outline-none focus:border-[#C89B3C]"
-              />
-              </div>
+          w-[300px] h-[300px]
+
+          bg-[#B08D57]/10
+          blur-[120px]
+        "
+      />
+
+      <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
+
+        {/* ROW 1 */}
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-5">
+
+          <div>
+            <label className="labelStyle">FULL NAME*</label>
+
+            <input
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="e.g. Rahul Sharma"
+              className={inputStyle}
+            />
+          </div>
+
+          <div>
+            <label className="labelStyle">PHONE NUMBER*</label>
+
+            <input
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+91 00000 00000"
+              className={inputStyle}
+            />
+          </div>
+
+        </div>
+
+        {/* ROW 2 */}
+        <div className="grid md:grid-cols-2 gap-5">
+
+          <div>
+            <label className="labelStyle">EMAIL*</label>
+
+            <input
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="email@address.com"
+              className={inputStyle}
+            />
+          </div>
+
+          <div>
+            <label className={labelStyle}>LOCATION</label>
+
+            <input
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="City / Area"
+              className={inputStyle}
+            />
+          </div>
+
+        </div>
+
+        {/* FILE */}
+        <div>
+
+          <p className="text-xs tracking-[0.28em] text-[#B08D57] mb-3 uppercase">
+            Upload House Plan (PDF)
+          </p>
+
+          <div
+            className="
+              flex flex-col sm:flex-row
+items-start sm:items-center
+gap-4 sm:gap-0
+justify-between
+
+              border border-white/[0.08]
+
+              bg-white/[0.03]
+
+              px-4 py-4
+
+              rounded-xl
+            "
+          >
+
+            <button
+              type="button"
+              onClick={() => fileRef.current.click()}
+              className="
+                border border-[#B08D57]
+
+                px-4 py-2
+
+                text-sm text-[#F5F1EA]
+
+                hover:bg-[#B08D57]/10
+
+                transition-all duration-300
+              "
+            >
+              SELECT PDF
+            </button>
+
+            <span className="text-sm text-[#A8A29E] truncate max-w-full sm:max-w-[200px]">
+              {fileName}
+            </span>
+
+            <input
+              type="file"
+              accept="application/pdf"
+              ref={fileRef}
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files[0];
+
+                if (file) {
+                  setFileName(file.name);
+
+                  setFormData({
+                    ...formData,
+                    file: file
+                  });
+                }
+              }}
+            />
+
+          </div>
+
+        </div>
+
+        {/* TEXTAREA */}
+        <div>
+
+          <label className="labelStyle">DETAILS</label>
+
+          <textarea
+            name="details"
+            value={formData.details}
+            onChange={handleChange}
+            placeholder="Tell us about your space and aesthetic preferences..."
+            className="
+              w-full
+
+              bg-white/[0.04]
+              border border-white/[0.08]
+
+              text-[#F5F1EA]
+              placeholder:text-[#777]
+
+              backdrop-blur-md
+
+              px-4 py-4
+
+              h-[120px] sm:h-[140px]
+
+              rounded-xl
+
+              outline-none
+
+              focus:border-[#B08D57]
+              focus:bg-white/[0.06]
+
+              transition-all duration-300
+            "
+          />
+
+        </div>
 
         {/* BUTTON */}
         <button
           className="
-            bg-[#C89B3C] text-white px-8 py-4 rounded-lg
-            hover:-translate-y-1 hover:shadow-xl
+            w-full
+
+            bg-[#B08D57]
+            text-[#0F0F10]
+
+            py-3.5 sm:py-4
+
+            rounded-xl
+
+            font-medium
+            tracking-wide
+
+            hover:-translate-y-1
+            hover:shadow-[0_15px_40px_rgba(176,141,87,0.25)]
+
             transition-all duration-300
           "
         >
@@ -285,64 +520,222 @@ const [fileName, setFileName] = useState("No file chosen");
         </button>
 
       </form>
-    </div>
 
-    {/* RIGHT SIDE IMAGE */}
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={reset}
-      className=" 
-        rounded-md overflow-hidden
-        transition-transform duration-300 ease-out
-        will-change-transform
-      "
-    >
-      <img
-        src="/images/contact.jpg"
-        className="w-full h-[640px] object-cover"
-      />
     </div>
 
   </div>
+
 </section>
-</Reveal>
 
-<Reveal>
-<section className="bg-[#F5EFE6] py-16 border-t border-[#E5D9CC]">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
 
-    {/* PHONE */}
-    <div className="flex flex-col items-center text-center space-y-3 transition-all duration-300 hover:-translate-y-2">
-      <Phone className="text-[#C89B3C]" size={22} />
-      <p className="text-xs tracking-[0.3em] text-[#7A6A5A]">PHONE</p>
-      <p className="text-[#5A0F14] text-lg font-medium">
-        +91 98765 43210
-      </p>
-    </div>
+<section
+  className="
+    relative
+    overflow-hidden
 
-    {/* EMAIL */}
-    <div className="flex flex-col items-center text-center space-y-3 transition-all duration-300 hover:-translate-y-2">
-      <Mail className="text-[#C89B3C]" size={22} />
-      <p className="text-xs tracking-[0.3em] text-[#7A6A5A]">EMAIL</p>
-      <p className="text-[#5A0F14] text-lg font-medium">
-        hello@vaagdeesha.com
-      </p>
-    </div>
+    py-16 sm:py-20 md:py-24
 
-    {/* LOCATION */}
-    <div className="flex flex-col items-center text-center space-y-3 transition-all duration-300 hover:-translate-y-2">
-      <MapPin className="text-[#C89B3C]" size={22} />
-      <p className="text-xs tracking-[0.3em] text-[#7A6A5A]">LOCATION</p>
-      <p className="text-[#5A0F14] text-sm leading-6">
-        Avenue de l'Atelier 42, Design District,<br />
-        Hyderabad, TS 500033
-      </p>
+    bg-[#0F0F10]
+  "
+>
+
+  {/* SUBTLE GLOW */}
+  <div
+    className="
+      absolute
+      top-1/2 left-1/2
+      -translate-x-1/2 -translate-y-1/2
+
+      w-[700px] h-[300px]
+
+      bg-[#B08D57]/10
+      blur-[140px]
+    "
+  />
+
+  <div className="relative z-10 max-w-6xl mx-auto px-6">
+
+    <div className="grid sm:grid-cols-2 md:grid-cols-3
+gap-5 sm:gap-6 ">
+
+      {/* PHONE */}
+      <div
+        className="
+          group
+
+          bg-white/[0.03]
+          backdrop-blur-xl
+
+          border border-white/[0.06]
+
+          rounded-[22px] sm:rounded-[28px]
+
+          p-6 sm:p-8 md:p-10
+
+          text-center
+
+          transition-all duration-500
+
+          hover:-translate-y-2
+          hover:border-[#B08D57]/30
+          hover:bg-white/[0.05]
+        "
+      >
+
+        <div
+          className="
+            w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-6
+
+            rounded-full
+
+            bg-[#B08D57]/10
+
+            flex items-center justify-center
+          "
+        >
+          <Phone className="text-[#B08D57]" size={24} />
+        </div>
+
+        <p
+          className="
+            text-[#B08D57]
+            text-xs
+            tracking-[0.35em]
+            uppercase
+            mb-5
+          "
+        >
+          Phone
+        </p>
+
+        <p className="text-[#F5F1EA] text-lg sm:text-xl">
+          +91 98765 43210
+        </p>
+
+      </div>
+
+      {/* EMAIL */}
+      <div
+        className="
+          group
+
+          bg-white/[0.03]
+          backdrop-blur-xl
+
+          border border-white/[0.06]
+
+          rounded-[28px]
+
+          p-10
+
+          text-center
+
+          transition-all duration-500
+
+          hover:-translate-y-2
+          hover:border-[#B08D57]/30
+          hover:bg-white/[0.05]
+        "
+      >
+
+        <div
+          className="
+            w-14 h-14 mx-auto mb-6
+
+            rounded-full
+
+            bg-[#B08D57]/10
+
+            flex items-center justify-center
+          "
+        >
+          <Mail className="text-[#B08D57]" size={24} />
+        </div>
+
+        <p
+          className="
+            text-[#B08D57]
+            text-xs
+            tracking-[0.35em]
+            uppercase
+            mb-5
+          "
+        >
+          Email
+        </p>
+
+        <p className="text-[#F5F1EA] text-lg sm:text-xl break-all">
+          hello@vaagdeesha.com
+        </p>
+
+      </div>
+
+      {/* LOCATION */}
+      <div
+        className="
+          group
+
+          bg-white/[0.03]
+          backdrop-blur-xl
+
+          border border-white/[0.06]
+
+          rounded-[28px]
+
+          p-10
+
+          text-center
+
+          transition-all duration-500
+
+          hover:-translate-y-2
+          hover:border-[#B08D57]/30
+          hover:bg-white/[0.05]
+        "
+      >
+
+        <div
+          className="
+            w-14 h-14 mx-auto mb-6
+
+            rounded-full
+
+            bg-[#B08D57]/10
+
+            flex items-center justify-center
+          "
+        >
+          <MapPin className="text-[#B08D57]" size={24} />
+        </div>
+
+        <p
+          className="
+            text-[#B08D57]
+            text-xs
+            tracking-[0.35em]
+            uppercase
+            mb-5
+          "
+        >
+          Studio
+        </p>
+
+        <p className="text-[#F5F1EA] text-lg sm:text-xl leading-[1.9]">
+          Avenue de l'Atelier 42,
+          <br />
+          Design District,
+          <br />
+          Hyderabad, TS 500033
+        </p>
+
+      </div>
+
     </div>
 
   </div>
+
 </section>
-</Reveal>
+
 </div>
   );
 }

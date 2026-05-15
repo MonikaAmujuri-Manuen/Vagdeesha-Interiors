@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
+import { ChevronDown } from "lucide-react";
 
 export default function Services() {
    const navigate = useNavigate();
+   const [activeIndex, setActiveIndex] = useState(0);
    const [openIndex, setOpenIndex] = useState(null);
   useEffect(() => {
   const elements = document.querySelectorAll(".reveal");
@@ -30,292 +32,1154 @@ export default function Services() {
 const services = [
   {
     title: "Residential Interiors",
-    desc: "Bespoke living spaces tailored to individual lifestyles, balancing functionality with refined artistic expression.",
-    desc1: "We design homes that reflect the people who live in them, creating emotional, elegant, and functional living environments.",
+    image: "/images/service1.png",
+    description:
+      "We design homes that reflect emotional warmth, elegance, and functionality.",
+
     points: [
-      "Personalized conceptual design & planning",
+      "Personalized conceptual planning",
       "Bespoke materials & finishes",
       "End-to-end execution",
     ],
-    img: "/images/service1.jpg",
   },
+
   {
     title: "Modular Kitchen Design",
-    desc: "Contemporary, functional culinary spaces featuring premium finishes and innovative storage solutions.",
-    desc1: "Functional yet aesthetic kitchens crafted with precision, premium materials, and modern technology.",
+    image: "/images/service2.png",
+    description:
+      "Functional yet aesthetic kitchens crafted with precision and premium finishes.",
+
     points: [
       "Smart storage systems",
       "Premium finishes",
       "Seamless appliance integration",
     ],
-    img: "/images/service2.jpg",
   },
+
   {
     title: "Office & Commercial Interiors",
-    desc: "Strategic workspace design to enhance productivity and reflect your brand identity.",
-    desc1: "Transforming workspaces into inspiring environments that enhance productivity.",
+    image: "/images/service3.jpg",
+    description:
+      "Transforming workspaces into inspiring environments that enhance productivity.",
+
     points: [
       "Brand-aligned design",
-      "Acoustic & lighting optimization",
+      "Lighting optimization",
       "Flexible layouts",
     ],
-    img: "/images/service3.jpg",
   },
+
   {
     title: "Custom Furniture Design",
-    desc: "Exclusive handcrafted pieces designed specifically for your space with uncompromising quality.",
-    desc1: "Unique handcrafted furniture pieces that blend art with functionality.",
+    image: "/images/service4.png",
+    description:
+      "Unique handcrafted furniture pieces blending art with functionality.",
+
     points: [
       "Tailored dimensions",
       "Premium materials",
       "Fine craftsmanship",
     ],
-    img: "/images/service4.jpg",
+  },
+  {
+  title: "Convention Hall Interiors",
+
+  image: "/images/conventionhall.png",
+
+  description:
+    "Designing grand convention spaces that balance elegance, functionality, and seamless guest experience for weddings, celebrations, and corporate gatherings.",
+
+  points: [
+    " Stage & backdrop design",
+    " Premium lighting concepts",
+    " Seating & circulation planning",
+    " Luxury ceiling treatments",
+  ],
+}
+];
+
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Discovery & Consultation",
+    desc: "Understanding lifestyle, spatial intent, emotional atmosphere, and architectural vision before shaping the design direction.",
+  },
+
+  {
+    number: "02",
+    title: "Concept & Material Curation",
+    desc: "Developing layouts, curated materials, textures, finishes, and mood-driven visual storytelling for the space.",
+  },
+
+  {
+    number: "03",
+    title: "Execution & Coordination",
+    desc: "Managing timelines, craftsmen, detailing, site coordination, and flawless execution with precision.",
+  },
+
+  {
+    number: "04",
+    title: "Styling & Final Reveal",
+    desc: "Layering lighting, furniture, décor, and finishing details to create a refined luxury experience.",
   },
 ];
+
+{/* SHOWCASE DATA */}
+const showcaseItems = [
+  {
+    image: "/images/process-3d.png",
+    label: "Architectural Luxury",
+    title: "Executive Living Space",
+  },
+
+  {
+    image: "/images/process2-3d.png",
+    label: "Spatial Experience",
+    title: "Open Dining Pavilion",
+  },
+
+  {
+    image: "/images/process1-3d.png",
+    label: "Private Luxury",
+    title: "Luxury Bedroom Suite",
+  },
+];
+
+    const [activeShowcase, setActiveShowcase] = useState(0);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setActiveShowcase((prev) =>
+          prev === showcaseItems.length - 1 ? 0 : prev + 1
+        );
+      }, 4500);
+
+      return () => clearInterval(interval);
+    }, []);
+
 
   return (
     // Responsive improvements applied (no design change)
 
-<section className="bg-[#F8F4EE] min-h-screen">
+<section className="
+relative min-h-screen
+overflow-hidden
+bg-[#050505]
+">
 
   <Navbar />
 
   {/* ================= HERO ================= */}
-  <div className="pt-24 md:pt-32 pb-16 md:pb-20 text-center px-4 sm:px-6 reveal">
-    <p className="text-xs tracking-[0.3em] md:tracking-[0.35em] text-[#C89B3C] mb-4 md:mb-6">
-      OUR SERVICES
-    </p>
+{/* HERO SECTION */}
+<section
+  className="
+    relative
 
-    <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#5A0F14] leading-tight max-w-4xl mx-auto">
-      Crafting Thoughtful Interior Experiences
-    </h1>
+    min-h-screen
+    md:h-[120vh]
 
-    <p className="text-[#7A6A5A] mt-4 md:mt-6 max-w-2xl mx-auto text-sm md:text-base">
-      From bespoke residential transformations to curated commercial
-      ateliers, we translate your vision into a sanctuary of architectural elegance.
-    </p>
-  </div>
-
-  {/* ================= CARDS ================= */}
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16 md:pb-24 grid sm:grid-cols-2 gap-6 md:gap-8">
-
-    {services.map((item, i) => (
-      <div
-        key={i}
-        className="reveal group bg-[#EFE7DC] p-6 md:p-10 rounded-xl border border-[#E5D9CC]
-        transition-all duration-500 ease-out
-        hover:bg-[#6B0F1A] hover:border-[#C89B3C]
-        hover:-translate-y-3 hover:shadow-[0_25px_80px_rgba(0,0,0,0.15)]"
-        style={{ transitionDelay: `${i * 120}ms` }}
-      >
-
-        <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-[#5A0F14]
-        transition-colors duration-500 group-hover:text-[#C89B3C]">
-          {item.title}
-        </h3>
-
-        <p className="text-[#7A6A5A] text-sm md:text-base leading-relaxed transition-colors 
-        duration-500 group-hover:text-[#E6D3A3]">
-          {item.desc}
-        </p>
-
-        <div className="mt-4 md:mt-6 w-10 h-[2px] bg-[#C89B3C] 
-        transition-all duration-500 group-hover:w-16"/>
-      </div>
-    ))}
-
-  </div>
-
-  {/* ================= DETAIL SECTIONS ================= */}
-  {/* 📱 MOBILE SWIPE VERSION */}
-<div className="block md:hidden px-4 pb-16">
-
-  <Swiper
-  modules={[Autoplay, Pagination]}
-  spaceBetween={20}
-  slidesPerView={1.05}
-  centeredSlides={true}
-
-  autoplay={{
-    delay: 3500,
-    disableOnInteraction: false,
-  }}
-
-  pagination={{
-    el: ".custom-pagination",
-    clickable: true,
-  }}
+    overflow-hidden
+    bg-black
+  "
 >
 
-    {services.map((item, i) => (
-      <SwiperSlide key={i}>
-        <div className="bg-white rounded-xl overflow-hidden shadow-md">
+  {/* BACKGROUND IMAGE */}
+  <div className="absolute inset-0">
 
-          <img src={item.img} className="w-full h-[220px] object-cover" />
+    <img
+      src="/images/services-hero.png"
+      alt=""
 
-          <div className="p-6">
-            <h3 className="text-xl font-serif text-[#5A0F14] mb-3">
-              {item.title}
-            </h3>
+      className="
+        absolute inset-0
 
-            <p className="text-sm text-[#7A6A5A]">
-              {item.desc1}
+        w-full h-full
+
+        object-cover
+      "
+    />
+
+    {/* LEFT GRADIENT */}
+    <div
+      className="
+        absolute inset-0
+
+        bg-gradient-to-r
+        from-black/85
+        via-black/50
+        to-transparent
+      "
+    />
+
+    {/* CINEMATIC VIGNETTE */}
+    <div
+      className="
+        absolute inset-0
+
+        bg-gradient-to-b
+        from-black/30
+        via-transparent
+        to-black/35
+      "
+    />
+
+  </div>
+
+  {/* CONTENT */}
+  <div
+    className="
+      relative z-10
+
+      min-h-screen
+
+flex items-center
+
+pt-32
+pb-16
+
+sm:pt-36
+md:pt-32
+
+      px-5 sm:px-10 lg:px-16
+
+      max-w-7xl
+      mx-auto
+    "
+  >
+
+    <div className="max-w-[620px] w-full">
+
+      {/* LABEL */}
+      <p
+        className="
+          text-[#B08D57]
+
+          text-[10px]
+          sm:text-xs
+          md:text-sm
+
+          tracking-[0.32em]
+          sm:tracking-[0.45em]
+
+          mb-5 sm:mb-8
+        "
+      >
+        OUR SERVICES
+      </p>
+
+      {/* HEADING */}
+      <h1
+        className="
+          font-serif
+
+          text-[#F5F1EA]
+
+          text-[44px]
+          sm:text-5xl
+          md:text-[70px]
+
+          leading-[0.95]
+
+          mb-6 sm:mb-8
+        "
+      >
+        Crafting
+        Thoughtful
+        <br />
+        Interior
+        <br />
+        Experiences
+      </h1>
+
+      {/* DESCRIPTION */}
+      <p
+        className="
+          text-[#C6C1BA]
+
+          text-[14px]
+          sm:text-base
+          md:text-lg
+
+          leading-[1.9]
+
+          max-w-[580px]
+
+          mb-8 sm:mb-12
+        "
+      >
+        From bespoke residential transformations
+        to curated commercial ateliers, we translate
+        your vision into a sanctuary of architectural elegance.
+      </p>
+
+      {/* BUTTONS */}
+      <div
+        className="
+          flex flex-wrap
+
+          gap-4 sm:gap-5
+        "
+      >
+
+        <button
+          onClick={() => navigate("/contact#form")}
+
+          className="
+            border border-[#B08D57]/50
+
+            text-[#F5F1EA]
+
+            px-6 sm:px-8
+            py-3 sm:py-4
+
+            tracking-[0.16em]
+            sm:tracking-[0.2em]
+
+            text-[11px]
+            sm:text-sm
+
+            rounded-md
+
+            backdrop-blur-md
+
+            bg-white/[0.03]
+
+            transition-all duration-500
+
+            hover:bg-white/10
+            hover:-translate-y-1
+          "
+        >
+          BOOK CONSULTATION
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  {/* ================= DETAIL SECTIONS ================= */}
+
+  {/* SECTION 1 */}
+  <section
+  id="services-grid"
+  className="
+    relative z-10
+
+    pt-16 sm:pt-20 md:pt-32
+    pb-14 sm:pb-16 md:pb-24
+    
+    px-4 sm:px-6 lg:px-16
+
+    overflow-hidden
+
+    bg-[#050505]
+  "
+>
+
+  {/* GLASS BACKGROUND */}
+
+<div
+  className="
+    absolute inset-0
+    pointer-events-none
+  "
+>
+
+  {/* BLUR GRADIENT */}
+  <div
+  className="
+    absolute inset-0
+
+    bg-[radial-gradient(circle_at_top_left,rgba(198,166,106,0.08),transparent_40%)]
+
+    opacity-70
+  "
+/>
+
+  {/* GOLDEN GLOW */}
+  <div
+    className="
+      absolute
+      top-[15%]
+      left-[10%]
+
+      w-[320px]
+      h-[320px]
+
+      rounded-full
+
+      bg-[#C6A66A]/[0.05]
+blur-[70px]
+    "
+  />
+
+  {/* SECOND LIGHT */}
+  <div
+    className="
+      absolute
+      bottom-[10%]
+      right-[5%]
+
+      w-[280px]
+      h-[280px]
+
+      rounded-full
+
+      bg-[#ffffff]/[0.02]
+blur-[60px]
+    "
+  />
+
+</div>
+
+  {services.map((service, index) => (
+
+    <div
+      key={index}
+      className="
+        max-w-6xl mx-auto
+        grid md:grid-cols-2
+        gap-6 sm:gap-8 md:gap-10
+        items-center
+
+        px-4 sm:px-6
+        pb-12 sm:pb-16 md:pb-24
+      "
+    >
+
+      {/* IMAGE */}
+      <div
+        className={`
+          overflow-hidden
+          rounded-[22px]
+          border border-white/[0.05]
+          bg-[#141416]
+          shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+
+          ${index % 2 !== 0
+            ? "order-1 md:order-2"
+            : ""
+          }
+        `}
+      >
+
+        <img
+          src={service.image}
+          alt=""
+          className="
+            w-full
+            h-[220px]
+            sm:h-[280px]
+            md:h-[360px]
+            object-cover
+
+            transition-transform
+            duration-[1200ms]
+
+            hover:scale-105
+          "
+        />
+
+      </div>
+
+      {/* CONTENT */}
+      <div
+  className={`
+    relative
+
+    bg-white/[0.03]
+    backdrop-blur-md
+
+    border border-white/[0.06]
+
+    rounded-[22px] md:rounded-[28px]
+
+    p-5 sm:p-7 md:p-12
+
+    shadow-[0_20px_80px_rgba(0,0,0,0.35)]
+
+    text-center md:text-left
+
+    ${index % 2 !== 0
+      ? "order-2 md:order-1"
+      : ""
+    }
+  `}
+>
+
+  <div
+  className="
+    absolute top-0 left-0
+    w-full h-[1px]
+
+    bg-gradient-to-r
+    from-transparent
+    via-[#C6A66A]/40
+    to-transparent
+  "
+/>
+
+        <p
+          className="
+            text-[#C6A66A]
+            text-xs
+            tracking-[0.35em]
+            mb-4
+          "
+        >
+          INTERIOR DESIGN
+        </p>
+
+        <h2
+          className="
+            text-[34px]
+            sm:text-[42px]
+            md:text-[56px]
+            font-serif
+            text-[#F5F1EA]
+
+            mb-6
+            leading-[1.1]
+          "
+        >
+          {service.title}
+        </h2>
+
+        <p
+          className="
+            text-[#A8A29E]
+            mb-8
+            text-[14px]
+            sm:text-[15px]
+            md:text-base
+            leading-[1.9]
+            max-w-[520px]
+          "
+        >
+          {service.description}
+        </p>
+
+        <div
+          className="
+            space-y-3
+            text-[#D6D0C7]
+            text-[14px]
+            sm:text-[15px]
+            md:text-base
+          "
+        >
+
+          {service.points.map((point, i) => (
+
+            <p key={i}>
+              → {point}
             </p>
 
-            {/* EXPAND IN SWIPER */}
-            <button
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="text-[#C89B3C] text-xs mt-3"
-            >
-              {openIndex === i ? "Hide" : "Details"}
-            </button>
+          ))}
 
-            {openIndex === i && (
-              <ul className="mt-3 text-xs text-[#5A0F14] space-y-1">
-                {item.points.map((p, idx) => (
-                  <li key={idx}>→ {p}</li>
+        </div>
+
+      </div>
+
+    </div>
+
+  ))}
+
+</section>
+
+{/* =========================
+    OUR APPROACH / PROCESS
+========================= */}
+
+<section
+      className="
+        relative
+        py-16 sm:py-20 md:py-30
+        
+        px-4 sm:px-6 lg:px-16
+        bg-[#050505]
+        overflow-hidden
+      "
+    >
+      {/* AMBIENT GLOW */}
+      <div
+        className="
+          absolute inset-0
+          bg-[radial-gradient(circle_at_top,rgba(198,166,106,0.08),transparent_55%)]
+        "
+      />
+      {/* GOLD BLUR */}
+      <div
+        className="
+          absolute
+          top-[10%]
+          right-[5%]
+          w-[260px]
+          sm:w-[400px]
+
+          h-[260px]
+          sm:h-[400px]
+
+          blur-[70px]
+          sm:blur-[120px]
+          bg-[#C6A66A]/10
+          rounded-full
+        "
+      />
+      <div className="relative z-10 max-w-7xl mx-auto">
+
+        <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-14 lg:gap-20  items-center">
+
+          {/* LEFT CONTENT */}
+          <div>
+
+            {/* LABEL */}
+            <p
+              className="
+                text-[#C6A66A]
+                text-xs
+                tracking-[0.38em]
+                uppercase
+                mb-6
+              "
+            >
+              Our Approach
+            </p>
+
+            {/* HEADING */}
+            <h2
+              className="
+                text-[42px]
+                sm:text-[48px]
+                md:text-[55px]
+
+                leading-[0.98]
+                tracking-[-0.04em]
+
+                font-serif
+                text-[#F5F1EA]
+
+                mb-8
+              "
+            >
+              Designed with clarity.
+              Executed with precision.
+            </h2>
+
+            {/* DESCRIPTION */}
+            <p
+              className="
+                text-[#9F978D]
+                text-[14px]
+                sm:text-[15px]
+                md:text-[17px]
+                leading-[1.9]
+                max-w-[620px]
+                mb-10 sm:mb-12
+              "
+            >
+              Every project follows a refined process —
+              balancing aesthetics, functionality,
+              craftsmanship, and emotional experience
+              through a deeply intentional design journey.
+            </p>
+
+            {/* DIVIDER */}
+            <div className="w-24 h-[1px] bg-[#C6A66A]/40 mb-10" />
+
+            {/* PROCESS LIST */}
+            <div className="space-y-1">
+
+              {processSteps.map((item, index) => {
+
+                const isOpen = activeIndex === index;
+
+                return (
+
+                  <div
+                    key={index}
+                    className="
+                      border-b border-white/[0.06]
+                      py-4 sm:py-5
+                    "
+                  >
+
+                    {/* HEADER */}
+                    <button
+                      onClick={() =>
+                        setActiveIndex(isOpen ? null : index)
+                      }
+
+                      className="
+                        w-full
+                        flex
+                        items-start
+                        justify-between
+                        gap-6
+
+                        text-left
+
+                        group
+                      "
+                    >
+
+                      <div className="flex gap-5">
+
+                        {/* NUMBER */}
+                        <span
+                          className="
+                            text-[#C6A66A]/70
+                            text-sm
+                            tracking-[0.28em]
+                            mt-2
+                          "
+                        >
+                          {item.number}
+                        </span>
+
+                        {/* TITLE */}
+                        <h3
+                          className="
+                            text-[#F5F1EA]
+                            text-[22px]
+                            sm:text-[24px]
+                            md:text-[25px]
+                            leading-[1.2]
+                            font-serif
+
+                            transition-all duration-500
+
+                            group-hover:text-[#C6A66A]
+                          "
+                        >
+                          {item.title}
+                        </h3>
+
+                      </div>
+
+                      {/* ICON */}
+                      <ChevronDown
+                        size={22}
+                        className={`
+                          mt-2
+                          text-[#C6A66A]
+                          transition-all duration-500
+                          ${isOpen ? "rotate-180" : ""}
+                        `}
+                      />
+
+                    </button>
+
+                    {/* DROPDOWN */}
+                    <div
+                      className={`
+                        overflow-hidden
+                        transition-all duration-700 ease-out
+
+                        ${isOpen
+                          ? "max-h-40 opacity-100 mt-6"
+                          : "max-h-0 opacity-0"}
+                      `}
+                    >
+
+                      <div className="flex gap-5">
+
+                        {/* GOLD LINE */}
+                        <div
+                          className="
+                            w-[1px]
+                            bg-[#C6A66A]/40
+                            ml-[10px]
+                          "
+                        />
+
+                        {/* DESCRIPTION */}
+                        <p
+                          className="
+                            text-[#9F978D]
+                            text-[14px]
+                            sm:text-[15px]
+                            leading-[1.9]
+                            max-w-[500px]
+                            pb-2
+                          "
+                        >
+                          {item.desc}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                );
+
+              })}
+
+            </div>
+
+          </div>
+
+          {/* RIGHT SIDE */}
+
+            <div
+              className="
+    relative
+    flex
+    flex-col
+    items-center
+    justify-center
+
+    mt-4 lg:-mt-10
+  "
+            >
+
+              {/* GLOW */}
+              <div
+                className="
+      absolute
+      inset-0
+      bg-[#C6A66A]/10
+      blur-[120px]
+      scale-75
+    "
+              />
+
+              {/* IMAGE CONTAINER */}
+              <div
+                className="
+      relative
+      w-full
+      flex
+      items-center
+      justify-center
+      min-h-[380px]
+      sm:min-h-[500px]
+      md:min-h-[620px]
+    "
+              >
+                {(() => {
+                  const item = showcaseItems[activeShowcase];
+
+                  return (
+                    <div
+                      key={activeShowcase}
+
+                      className="
+    absolute
+
+    animate-[showcaseFade_0.8s_ease]
+  "
+                    >
+
+                      {/* MAIN IMAGE */}
+                      <div
+                        className="
+            relative
+
+            hover:scale-[1.02]
+            transition-all
+            duration-700
+          "
+                      >
+
+                        <img
+                          src={item.image}
+                          alt={item.title}
+
+                          className="
+              w-full
+              max-w-[340px]
+              sm:max-w-[520px]
+              md:max-w-[760px]
+
+              object-contain
+
+              drop-shadow-[0_40px_120px_rgba(0,0,0,0.85)]
+            "
+                        />
+
+                      </div>
+
+                      {/* CONTENT */}
+                      <div
+                        className="
+            text-center
+            mt-6 sm:mt-10
+            max-w-[620px]
+            mx-auto
+          "
+                      >
+
+                        {/* LABEL */}
+                        <p
+                          className="
+              text-[#C6A66A]
+              text-[11px]
+              tracking-[0.35em]
+              uppercase
+              mb-4
+            "
+                        >
+                          {item.label}
+                        </p>
+
+                        {/* TITLE */}
+                        <h3
+                          className="
+              text-[#F5F1EA]
+              font-serif
+
+              text-[24px]
+              sm:text-[28px]
+              md:text-[30px]
+
+              leading-[1.1]
+              tracking-[-0.03em]
+
+              mb-5
+            "
+                        >
+                          {item.title}
+                        </h3>
+
+                        {/* DESCRIPTION */}
+                        <p
+                          className="
+              text-[#9F978D]
+              text-[14px]
+              sm:text-[15px]
+              md:text-[16px]
+
+              leading-[1.9]
+
+              max-w-[520px]
+              mx-auto
+            "
+                        >
+                          {item.desc}
+                        </p>
+
+                      </div>
+
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {/* INDICATORS */}
+              <div
+                className="
+      flex
+      items-center
+      gap-3
+      mt-4 sm:mt-6
+    "
+              >
+
+                {showcaseItems.map((_, index) => (
+
+                  <button
+                    key={index}
+                    onClick={() => setActiveShowcase(index)}
+
+                    className={`
+          transition-all
+          duration-500
+          rounded-full
+
+          ${activeShowcase === index
+                        ? "w-10 h-[3px] bg-[#C6A66A]"
+                        : "w-3 h-3 bg-white/20 hover:bg-white/40"
+                      }
+        `}
+                  />
+
                 ))}
-              </ul>
-            )}
+
+              </div>
+
+              {/* QUOTE */}
+              <div
+                className="
+      mt-12 sm:mt-16 md:mt-20
+      text-center
+      max-w-[520px]
+    "
+              >
+
+                <p
+                  className="
+        text-[#F5F1EA]
+        font-serif
+
+        text-[20px]
+        sm:text-[24px]
+        md:text-[28px]
+
+        leading-[1.5]
+        tracking-[-0.02em]
+
+        mb-6
+      "
+                >
+                  “Luxury is not created through excess —
+                  but through intentional detail.”
+                </p>
+
+                <div
+                  className="
+        w-16
+        h-[1px]
+        bg-[#C6A66A]/40
+        mx-auto
+        mb-4
+      "
+                />
+
+                <p
+                  className="
+        text-[#9F978D]
+        text-sm
+        tracking-[0.3em]
+        uppercase
+      "
+                >
+                  Vaagdeesha Interiors
+                </p>
+
+              </div>
+
+            </div>
+
           </div>
 
         </div>
-      </SwiperSlide>
-    ))}
 
-  </Swiper>
-  <div className="custom-pagination mt-4 flex justify-center"></div>
-</div>
-
-  {/* SECTION 1 */}
-  <div className="hidden md:block">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-6 pb-16 md:pb-24 reveal">
-
-    <div className="overflow-hidden rounded-xl">
-      <img
-        src="/images/service1.jpg"
-        className="w-full h-[260px] sm:h-[320px] md:h-[420px] object-cover transition-transform duration-[1200ms] hover:scale-105"
-      />
-    </div>
-
-    <div className="text-center md:text-left">
-      <h2 className="text-2xl md:text-4xl font-serif text-[#5A0F14] mb-4 md:mb-6">
-        Residential Interiors
-      </h2>
-
-      <p className="text-[#7A6A5A] mb-4 md:mb-6 text-sm md:text-base">
-        We design homes that reflect the people who live in them,
-        creating emotional, elegant, and functional living environments.
-      </p>
-
-      <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-[#5A5A5A]">
-        <li>→ Personalized conceptual design & planning</li>
-        <li>→ Bespoke materials & finishes</li>
-        <li>→ End-to-end execution</li>
-      </ul>
-    </div>
-  </div>
-  
-
-  {/* SECTION 2 */}
-
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-6 pb-16 md:pb-24 reveal">
-
-    <div className="text-center md:text-left order-2 md:order-1">
-      <h2 className="text-2xl md:text-4xl font-serif text-[#5A0F14] mb-4 md:mb-6">
-        Modular Kitchen Design
-      </h2>
-
-      <p className="text-[#7A6A5A] mb-4 md:mb-6 text-sm md:text-base">
-        Functional yet aesthetic kitchens crafted with precision,
-        premium materials, and modern technology.
-      </p>
-
-      <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-[#5A5A5A]">
-        <li>→ Smart storage systems</li>
-        <li>→ Premium finishes</li>
-        <li>→ Seamless appliance integration</li>
-      </ul>
-    </div>
-
-    <div className="overflow-hidden rounded-xl order-1 md:order-2">
-      <img
-        src="/images/service2.jpg"
-        className="w-full h-[260px] sm:h-[320px] md:h-[420px] object-cover transition-transform duration-[1200ms] hover:scale-105"
-      />
-    </div>
-  </div>
-
-  {/* SECTION 3 */}
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-6 pb-16 md:pb-24 reveal">
-
-    <div className="overflow-hidden rounded-xl">
-      <img
-        src="/images/service3.jpg"
-        className="w-full h-[260px] sm:h-[320px] md:h-[420px] object-cover transition-transform duration-[1200ms] hover:scale-105"
-      />
-    </div>
-
-    <div className="text-center md:text-left">
-      <h2 className="text-2xl md:text-4xl font-serif text-[#5A0F14] mb-4 md:mb-6">
-        Office & Commercial Interiors
-      </h2>
-
-      <p className="text-[#7A6A5A] mb-4 md:mb-6 text-sm md:text-base">
-        Transforming workspaces into inspiring environments that enhance productivity.
-      </p>
-
-      <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-[#5A5A5A]">
-        <li>→ Brand-aligned design</li>
-        <li>→ Acoustic & lighting optimization</li>
-        <li>→ Flexible layouts</li>
-      </ul>
-    </div>
-  </div>
-
-  {/* SECTION 4 */}
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-6 pb-16 md:pb-24 reveal">
-
-    <div className="text-center md:text-left order-2 md:order-1">
-      <h2 className="text-2xl md:text-4xl font-serif text-[#5A0F14] mb-4 md:mb-6">
-        Custom Furniture Design
-      </h2>
-
-      <p className="text-[#7A6A5A] mb-4 md:mb-6 text-sm md:text-base">
-        Unique handcrafted furniture pieces that blend art with functionality.
-      </p>
-
-      <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-[#5A5A5A]">
-        <li>→ Tailored dimensions</li>
-        <li>→ Premium materials</li>
-        <li>→ Fine craftsmanship</li>
-      </ul>
-    </div>
-
-    <div className="overflow-hidden rounded-xl order-1 md:order-2">
-      <img
-        src="/images/service4.jpg"
-        className="w-full h-[260px] sm:h-[320px] md:h-[420px] object-cover transition-transform duration-[1200ms] hover:scale-105"
-      />
-    </div>
-  </div>
-  </div>
+</section>
 
   {/* ================= CTA ================= */}
-  <div className="bg-[#EFE7DC] text-center py-16 md:py-28 px-4 sm:px-6">
-    <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-[#5A0F14] mb-6 md:mb-8">
-      Let’s Design Your Dream Space
+  {/* CTA */}
+<div className="
+  relative overflow-hidden
+  py-16 sm:py-20 md:py-33
+  border-t border-white/[0.05]
+">
+
+  {/* BACKGROUND */}
+  <div className="absolute inset-0 bg-[#0D0D0E]" />
+
+  {/* GLOW */}
+  <div className="
+    absolute left-1/2 top-1/2
+    -translate-x-1/2 -translate-y-1/2
+    w-[320px]
+sm:w-[520px]
+md:w-[700px]
+
+h-[320px]
+sm:h-[520px]
+md:h-[700px]
+
+bg-[#B08D57]/10
+
+blur-[70px]
+sm:blur-[100px]
+md:blur-[140px]
+    rounded-full
+  " />
+
+  <div
+  className="
+    relative z-10
+
+    text-center
+
+    px-4 sm:px-6
+  "
+>
+
+    <p className="
+      text-[#B08D57]
+      tracking-[0.4em]
+      text-[11px]
+      mb-4 sm:mb-5
+    ">
+      CURATED SPACES
+    </p>
+
+    <h2 className="
+      text-[38px]
+sm:text-5xl
+md:text-6xl
+      font-serif
+      text-[#F5F1EA]
+      leading-[1]
+      mb-6 sm:mb-8
+    ">
+      Let’s Design <br />
+      Your Dream Space
     </h2>
+
+    <p className="
+      max-w-[320px]
+sm:max-w-2xl
+
+mx-auto
+
+text-[#9A9A9D]
+
+text-[14px]
+sm:text-base
+
+leading-[1.9]
+
+mb-8 sm:mb-10
+    ">
+      Bespoke interiors crafted with timeless materials,
+      architectural precision, and emotional warmth.
+    </p>
 
     <button
       onClick={() => navigate("/contact#form")}
-      className="bg-[#C89B3C] text-white px-6 md:px-10 py-3 md:py-4 rounded-md
-      tracking-[0.2em] text-xs md:text-sm hover:scale-105 transition-all duration-300"
+      className="
+        group relative overflow-hidden
+        bg-[#F5F1EA]
+        text-black
+        px-7 sm:px-10
+        py-3 sm:py-4
+        rounded-full
+        tracking-[0.18em] sm:tracking-[0.25em]
+        text-[12px] sm:text-sm
+        transition-all duration-500
+        hover:-translate-y-1
+        hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]
+      "
     >
-      BOOK CONSULTATION
+
+      <span className="relative z-10">
+        BOOK CONSULTATION
+      </span>
+
+      <div className="
+        absolute inset-0
+        bg-gradient-to-r
+        from-[#7D1220]
+        to-[#B08D57]
+        opacity-0
+        group-hover:opacity-100
+        transition duration-500
+      " />
     </button>
+
   </div>
+</div>
 
 </section>
   );
