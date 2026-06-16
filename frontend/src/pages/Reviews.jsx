@@ -693,7 +693,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
 
         {/* LINK */}
         <a
-          href="#"
+          href="#view"
           className="
             inline-flex items-center gap-3
 
@@ -708,7 +708,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
             hover:text-[#F5F1EA]
           "
         >
-          View Project Case Study
+          Explore This Transformation 
           <span>→</span>
         </a>
 
@@ -721,7 +721,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
 </section>
 
 
-    <section className="relative py-20 md:py-25 overflow-hidden bg-[#0F0F10]">
+    <section id="view" className="relative py-20 md:py-25 overflow-hidden bg-[#0F0F10]">
 
       {/* AMBIENT GLOW */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(176,141,87,0.08),transparent_60%)]" />

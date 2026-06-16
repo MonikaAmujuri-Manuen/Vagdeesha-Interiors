@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
@@ -12,8 +13,10 @@ import Admin from "./pages/Admin";
 
 export default function App() {
   return (
+    
     <Router>
       <CursorGlow />
+      <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<Home />} />
