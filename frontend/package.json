@@ -5,13 +5,13 @@
   "type": "module",
   "homepage": "https://monikaamujuri-manuen.github.io/Vagdeesha-Interiors",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.2.3",
@@ -20,6 +20,7 @@
     "pannellum": "^2.5.7",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-helmet-async": "^3.0.0",
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.14.1",
     "swiper": "^12.1.4"

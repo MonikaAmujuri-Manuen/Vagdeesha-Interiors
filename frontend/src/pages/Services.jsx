@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -171,8 +172,13 @@ const showcaseItems = [
 
 
   return (
-    // Responsive improvements applied (no design change)
-
+    <>
+    <SEO
+  title="Interior Design Services | Vaagdeesha Interiors"
+  description="Vaagdeesha Interiors offers luxury residential and commercial interior design services, space planning, modular kitchens, custom furniture, false ceilings, lighting design, and complete interior solutions."
+  keywords="Interior Design Services, Residential Interiors, Commercial Interiors, Modular Kitchen Design, False Ceiling Design, Custom Furniture, Luxury Interiors, Space Planning, Vaagdeesha Interiors"
+/>
+    
 <section className="
 relative min-h-screen
 overflow-hidden
@@ -1193,5 +1199,6 @@ mb-8 sm:mb-10
 </div>
 
 </section>
+</>
   );
 }

@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import { useRef, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { Phone, Mail, MapPin } from "lucide-react";
@@ -173,6 +174,11 @@ const labelStyle = `
   return (
 
     <div className="bg-[#0F0F10] text-[#F5F1EA] overflow-hidden">
+      <SEO
+  title="Contact Vaagdeesha Interiors | Interior Design Consultation"
+  description="Contact Vaagdeesha Interiors for luxury residential and commercial interior design services. Schedule a consultation and bring your dream space to life with our expert designers."
+  keywords="Contact Vaagdeesha Interiors, Interior Design Consultation, Interior Designers, Luxury Interiors, Residential Interiors, Commercial Interiors, Home Interior Design"
+/>
           <Navbar />
     
     <section

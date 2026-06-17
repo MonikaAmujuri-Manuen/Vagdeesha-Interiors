@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import Reveal from "../components/Reveal";
@@ -233,6 +234,14 @@ useEffect(() => {
   return (
     
       <>
+      <SEO
+    title="Vaagdeesha Interiors | Luxury Interior Designers in Guntur"
+    description="Vaagdeesha Interiors specializes in luxury residential and commercial interior design, creating elegant, functional, and timeless spaces with premium craftsmanship."
+    keywords="Vaagdeesha Interiors, Interior Designers in Guntur, Luxury Interiors, Residential Interiors, Commercial Interiors, Interior Design Services, Modern Home Interiors"
+  />
+  <h1 className="sr-only">
+        Luxury Interior Designers in Guntur - Vaagdeesha Interiors
+      </h1>
         <Navbar />
         <Hero />
 

@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import React, { useState } from "react";
 import EditorialGrid from "../components/EditorialGrid";
@@ -275,6 +276,13 @@ export default function Portfolio() {
 
 
   return (
+    <>
+    <SEO
+  title="Interior Design Portfolio | Vaagdeesha Interiors"
+  description="Explore the portfolio of Vaagdeesha Interiors featuring luxury residential and commercial interior design projects, modern living spaces, elegant bedrooms, kitchens, and bespoke interiors."
+  keywords="Interior Design Portfolio, Luxury Interior Projects, Residential Interiors, Commercial Interiors, Modern Living Room Design, Bedroom Interiors, Kitchen Interiors, Vaagdeesha Interiors"
+/>
+
     <section className=" relative overflow-hidden bg-[#0F0F10]
  pt-20 sm:pt-24 md:pt-28 px-4 sm:px-6">
       <div className="absolute inset-0 opacity-80">
@@ -763,5 +771,6 @@ scrollbar-hide
 </div>
 
     </section>
+    </>
   );
 }
