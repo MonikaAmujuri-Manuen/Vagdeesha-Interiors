@@ -6,6 +6,17 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import { ChevronDown } from "lucide-react";
 
+import servicehero from "../assets/services/services-hero.png";
+import service1 from "../assets/services/service1.png";
+import service2 from "../assets/services/service2.png";
+import service3 from "../assets/services/service3.jpg";
+import service4 from "../assets/services/service4.png";
+import service5 from "../assets/services/service5.png";
+
+import process from "../assets/services/process-3d.png";
+import process1 from "../assets/services/process1-3d.png";
+import process2 from "../assets/services/process2-3d.png";
+
 export default function Services() {
    const navigate = useNavigate();
    const [activeIndex, setActiveIndex] = useState(0);
@@ -32,7 +43,7 @@ export default function Services() {
 const services = [
   {
     title: "Residential Interiors",
-    image: "/images/service1.png",
+    image: service1,
     description:
       "We design homes that reflect emotional warmth, elegance, and functionality.",
 
@@ -45,7 +56,7 @@ const services = [
 
   {
     title: "Modular Kitchen Design",
-    image: "/images/service2.png",
+    image: service2,
     description:
       "Functional yet aesthetic kitchens crafted with precision and premium finishes.",
 
@@ -58,7 +69,7 @@ const services = [
 
   {
     title: "Office & Commercial Interiors",
-    image: "/images/service3.jpg",
+    image: service3,
     description:
       "Transforming workspaces into inspiring environments that enhance productivity.",
 
@@ -71,7 +82,7 @@ const services = [
 
   {
     title: "Custom Furniture Design",
-    image: "/images/service4.png",
+    image: service4,
     description:
       "Unique handcrafted furniture pieces blending art with functionality.",
 
@@ -84,7 +95,7 @@ const services = [
   {
   title: "Convention Hall Interiors",
 
-  image: "/images/conventionhall.png",
+  image: service5,
 
   description:
     "Designing grand convention spaces that balance elegance, functionality, and seamless guest experience for weddings, celebrations, and corporate gatherings.",
@@ -128,19 +139,19 @@ const processSteps = [
 {/* SHOWCASE DATA */}
 const showcaseItems = [
   {
-    image: "/images/process-3d.png",
+    image: process,
     label: "Architectural Luxury",
     title: "Executive Living Space",
   },
 
   {
-    image: "/images/process2-3d.png",
+    image: process2,
     label: "Spatial Experience",
     title: "Open Dining Pavilion",
   },
 
   {
-    image: "/images/process1-3d.png",
+    image: process1,
     label: "Private Luxury",
     title: "Luxury Bedroom Suite",
   },
@@ -188,7 +199,7 @@ bg-[#050505]
   <div className="absolute inset-0">
 
     <img
-      src="/images/services-hero.png"
+      src={servicehero}
       alt=""
 
       className="

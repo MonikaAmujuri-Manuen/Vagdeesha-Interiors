@@ -3,8 +3,20 @@ import React, { useState } from "react";
 import EditorialGrid from "../components/EditorialGrid";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import portfoliobg from "/images/portfolio-bg.png";
+import portfoliobg from "../assets/portfolio/portfolio-bg.png";
 import { useEffect } from "react";
+
+import living1 from "../assets/collections/living1.png"
+import living2 from "../assets/collections/living2.png"
+import kitchen1 from "../assets/collections/kitchen1.png"
+import kitchen2 from "../assets/collections/kitchen2.png"
+import bedroom1 from "../assets/collections/bedroom1.png"
+import bedroom2 from "../assets/collections/bedroom2.png"
+import dining1 from "../assets/collections/dining2.png"
+import dining2 from "../assets/collections/dining2.png"
+import office1 from "../assets/collections/office1.png"
+import office2 from "../assets/collections/office2.png"
+
 
 export default function Portfolio() {
   const navigate = useNavigate();
@@ -21,14 +33,14 @@ export default function Portfolio() {
       title: "Living Rooms",
       description:
         "Layered lighting, sculptural furniture, and intimate atmospheres designed for modern luxury living.",
-      cover: "/images/collections/living1.png",
+      cover: living1,
       projects: [
         {
           name: "Midnight Residence",
           location: "Hyderabad",
           year: "2025",
           area: "4200 sq.ft",
-          image: "/images/collections/living1.png",
+          image: living1,
           narrative:
       "Designed with layered lighting, smoked oak finishes, textured marble, and sculptural silhouettes to create an intimate luxury atmosphere.",
 
@@ -46,7 +58,7 @@ export default function Portfolio() {
           location: "Bangalore",
           year: "2024",
           area: "5100 sq.ft",
-          image: "/images/collections/living2.png",
+          image: living2,
           narrative:
     "Skyline Villa was envisioned as a contemporary retreat suspended between urban sophistication and natural calm. Expansive glazing, layered ambient lighting, and rich material contrasts create interiors that feel immersive yet deeply comforting.",
 
@@ -68,14 +80,14 @@ export default function Portfolio() {
       title: "Kitchens",
       description:
         "Minimal compositions crafted with warm stone, ambient lighting, and architectural restraint.",
-      cover: "/images/collections/kitchen1.png",
+      cover: kitchen1,
       projects: [
         {
           name: "Lumina Kitchen",
           location: "London",
           year: "2025",
           area: "1800 sq.ft",
-          image: "/images/collections/kitchen1.png",
+          image: kitchen1,
           narrative:
     "Lumina Kitchen blends sculptural minimalism with refined luxury, creating a space where functionality feels effortlessly elegant. Soft lighting, seamless cabinetry, and natural stone surfaces establish a calm and sophisticated atmosphere.",
 
@@ -95,7 +107,7 @@ export default function Portfolio() {
           location: "Dubai",
           year: "2024",
           area: "2200 sq.ft",
-          image: "/images/collections/kitchen2.png",
+          image: kitchen2,
           narrative:
     "Terra Marble Kitchen was crafted as a bold contemporary statement where dramatic stone textures meet understated elegance. The interplay of dark finishes and ambient lighting creates depth, warmth, and architectural presence.",
 
@@ -117,14 +129,14 @@ export default function Portfolio() {
       title: "Bedrooms",
       description:
         "Quiet luxury bedrooms shaped around softness, comfort, and timeless material palettes.",
-      cover: "/images/collections/bedroom1.png",
+      cover: bedroom1,
       projects: [
         {
           name: "Serene Suite",
           location: "Mumbai",
           year: "2025",
           area: "1400 sq.ft",
-          image: "/images/collections/bedroom1.png",
+          image: bedroom1,
           narrative:
     "Serene Suite was designed as a sanctuary of softness and calm, where muted tones, layered textures, and ambient illumination create a deeply restful atmosphere. The space balances minimal elegance with emotional warmth.",
 
@@ -144,7 +156,7 @@ export default function Portfolio() {
           location: "Hyderabad",
           year: "2024",
           area: "1600 sq.ft",
-          image: "/images/collections/bedroom2.png",
+          image: bedroom2,
           narrative:
     "Ivory Retreat embraces understated luxury through a palette of warm neutrals, sculptural furniture, and soft atmospheric lighting. The interiors were crafted to evoke tranquility while maintaining architectural sophistication.",
 
@@ -166,14 +178,14 @@ export default function Portfolio() {
       title: "Dining Spaces",
       description:
         "Elegant dining environments where atmosphere and materiality become part of the experience.",
-      cover: "/images/collections/dining1.png",
+      cover: dining1,
       projects: [
         {
           name: "Obsidian Dining",
           location: "Chennai",
           year: "2025",
           area: "1200 sq.ft",
-          image: "/images/collections/dining1.png",
+          image: dining1,
           narrative:
     "Obsidian Dining was envisioned as an intimate social space where dramatic contrasts, warm lighting, and sculptural furniture create a refined dining experience. The dark material palette enhances depth while maintaining elegance and comfort.",
 
@@ -193,7 +205,7 @@ export default function Portfolio() {
           location: "Pune",
           year: "2024",
           area: "1500 sq.ft",
-          image: "/images/collections/dining2.png",
+          image: dining2,
           narrative:
     "Noir Table House blends contemporary sophistication with quiet warmth, creating a dining environment that feels immersive and timeless. Layered lighting and minimal architectural lines allow the material palette to become the focal experience.",
 
@@ -215,14 +227,14 @@ export default function Portfolio() {
       title: "Office Interiors",
       description:
         "Workspaces designed with sophistication, calm palettes, and modern executive character.",
-      cover: "/images/collections/office1.png",
+      cover: office1,
       projects: [
         {
           name: "Atelier Workspace",
           location: "Bangalore",
           year: "2025",
           area: "6000 sq.ft",
-          image: "/images/collections/office1.png",
+          image: office1,
           narrative:
     "Atelier Workspace was designed as a refined creative environment where contemporary minimalism meets executive sophistication. The interiors balance openness with intimacy, encouraging focus, collaboration, and calm productivity.",
 
@@ -242,7 +254,7 @@ export default function Portfolio() {
           location: "Hyderabad",
           year: "2024",
           area: "7200 sq.ft",
-          image: "/images/collections/office2.png",
+          image: office2,
           narrative:
     "Axis Corporate redefines the modern executive workspace through a balance of architectural precision and understated luxury. Dark tones, warm lighting, and layered textures create an atmosphere that feels both powerful and welcoming.",
 

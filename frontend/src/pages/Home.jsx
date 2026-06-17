@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
-import portfoliobg from "/images/portfolio-bg.png";
+
+import portfoliobg from "../assets/portfolio/portfolio-bg.png";
 import luxuryBg from "../assets/luxuryBg.png"
 import textureBg from "../assets/texturebg.png"
 import serviceBg from "../assets/serviceBg.png"
 import ctaBg from "../assets/ctaBg.png"
 import luxuryvilla from "../assets/luxury-villa.png"
+
 import atelier1 from "../assets/atelier1.jpg";
 import atelier2 from "../assets/atelier2.jpg";
+
 import portfolio1 from "../assets/portfolio/portfolio1.png"
 import portfolio2 from "../assets/portfolio/portfolio2.jpg"
 import portfolio4 from "../assets/portfolio/portfolio4.jpg"
@@ -23,6 +26,12 @@ import portfolio9 from "../assets/portfolio/portfolio9.jpg"
 import portfolio10 from "../assets/portfolio/portfolio10.jpg"
 import portfolio11 from "../assets/portfolio/portfolio11.jpg"
 import portfolio12 from "../assets/portfolio/portfolio12.jpg"
+
+import service01 from "../assets/services/service01.jpg"
+import service02 from "../assets/services/service02.jpg"
+import service03 from "../assets/services/service04.jpg"
+import service04 from "../assets/services/service04.jpg"
+
 import client from "../assets/client.png"
 import client2 from "../assets/client2.png"
 import { useEffect, useRef, useState } from "react"
@@ -181,22 +190,22 @@ useEffect(() => {
     {
       title: "Architectural Design",
       desc: "Structural integrity meeting aesthetic perfection in every foundation.",
-      image: "/images/service01.jpg",
+      image: service01,
     },
     {
       title: "Interior Styling",
       desc: "The art of choosing textures, colors, and furniture that speak to you.",
-      image: "/images/service02.jpg",
+      image: service02,
     },
     {
       title: "Custom Furniture",
       desc: "Bespoke pieces crafted by master artisans to fit your space exactly.",
-      image: "/images/service03.jpg",
+      image: service03,
     },
     {
       title: "Turnkey Solutions",
       desc: "Stress-free project management from concept to final reveal.",
-      image: "/images/service04.jpg",
+      image: service04,
     },
   ];
 

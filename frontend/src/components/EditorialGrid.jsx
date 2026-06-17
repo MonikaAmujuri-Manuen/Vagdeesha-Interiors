@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+import p4 from "../assets/projects/p4.png"
+
 export default function EditorialGrid() {
   const [offset, setOffset] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -124,7 +126,7 @@ pointer-events-none
     `}
   >
     <img
-      src="/images/p4.png"
+      src={p4}
       className="
         h-[420px]
         w-full object-cover

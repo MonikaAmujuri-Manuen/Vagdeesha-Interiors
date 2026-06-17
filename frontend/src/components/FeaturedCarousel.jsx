@@ -1,34 +1,41 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import p1 from "../assets/projects/p1.jpg"
+import p2 from "../assets/projects/p2.jpg"
+import p3 from "../assets/projects/p3.jpg"
+import p6 from "../assets/projects/p6.png"
+import p7 from "../assets/projects/p7.png"
+import p8 from "../assets/projects/p8.png"
+
 const projects = [
   {
-    image: "/images/p1.jpg",
+    image: p1,
     title: "Modern Living",
     location: "VILLA — DUBAI",
   },
   {
-    image: "/images/p2.jpg",
+    image: p2,
     title: "Lumina Kitchen",
     location: "PENTHOUSE — LONDON",
   },
   {
-    image: "/images/p3.jpg",
+    image: p3,
     title: "Serene Bedroom",
     location: "RESIDENCE — HYDERABAD",
   },
   {
-    image: "/images/p6.png",
+    image: p6,
     title: "Private Pool",
     location: "PENTHOUSE — BANGALORE",
   },
   {
-    image: "/images/p7.png",
+    image: p7,
     title: "Luxury Bedroom",
     location: "RESIDENCE — BANGALORE",
   },
   {
-    image: "/images/p8.png",
+    image: p8,
     title: "Kitchen Elegance",
     location: "BUNGALOW — KOCHI",
   },

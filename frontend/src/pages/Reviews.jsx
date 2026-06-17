@@ -4,6 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
+import reviewhero from "../assets/reviews/review-hero.png"
+import review from "../assets/reviews/review.png"
+import transformation1 from "../assets/reviews/transformation1.png"
+import transformation2 from "../assets/reviews/transformation2.png"
+import transformation3 from "../assets/reviews/transformation3.png"
+import transformation4 from "../assets/reviews/transformation4.png"
+import transformation5 from "../assets/reviews/transformation5.png"
 
 
 export default function Reviews() {
@@ -43,23 +50,23 @@ function useInView() {
 const transformations = [
   {
     title: "Modern Heritage Residence",
-    image: "/images/transformation1.png",
+    image: transformation1,
   },
   {
     title: "Luxury Living Transformation",
-    image: "/images/transformation2.png",
+    image: transformation2,
   },
   {
     title: "Contemporary Villa Upgrade",
-    image: "/images/transformation3.png",
+    image: transformation3,
   },
   {
     title: "Minimalist Interior Revival",
-    image: "/images/transformation4.png",
+    image: transformation4,
   },
   {
     title: "luxury reading lounge",
-    image: "/images/transformation5.png",
+    image: transformation5,
   },
 
 ];
@@ -93,7 +100,7 @@ const transformations = [
 
   {/* BACKGROUND IMAGE */}
   <img
-    src="/images/review-hero.png"
+    src={reviewhero}
     alt=""
     className="
       absolute inset-0
@@ -534,7 +541,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
     >
 
       <img
-        src="/images/review.png"
+        src={review}
         className={`
           w-full
           h-[320px] sm:h-[420px] md:h-[560px]
