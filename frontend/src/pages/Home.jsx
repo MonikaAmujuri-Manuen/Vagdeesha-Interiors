@@ -235,13 +235,11 @@ useEffect(() => {
     
       <>
       <SEO
-    title="Vaagdeesha Interiors | Luxury Interior Designers in Guntur"
-    description="Vaagdeesha Interiors specializes in luxury residential and commercial interior design, creating elegant, functional, and timeless spaces with premium craftsmanship."
-    keywords="Vaagdeesha Interiors, Interior Designers in Guntur, Luxury Interiors, Residential Interiors, Commercial Interiors, Interior Design Services, Modern Home Interiors"
-  />
-  <h1 className="sr-only">
-        Luxury Interior Designers in Guntur - Vaagdeesha Interiors
-      </h1>
+  title="Vaagdeesha Interiors | Luxury Residential & Commercial Interior Design"
+  description="Vaagdeesha Interiors specializes in luxury residential and commercial interior design, creating elegant and timeless spaces with exceptional craftsmanship."
+  keywords="Vaagdeesha Interiors, Interior Designers, Luxury Interiors, Residential Interiors, Commercial Interiors"
+/>
+  
         <Navbar />
         <Hero />
 
