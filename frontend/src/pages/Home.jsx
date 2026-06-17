@@ -1386,8 +1386,8 @@ to-[#262626]/95" />
           <div
             className="absolute inset-0 bg-cover bg-center opacity-15 "
             style={{
-              backgroundImage: `url('/images/portfolio-bg.png')`,
-            }}
+  backgroundImage: `url(${portfoliobg})`,
+}}
           ></div>
 
           {/* DARK OVERLAY */}
@@ -1531,8 +1531,8 @@ to-[#262626]/95" />
           <div
             className="absolute inset-0 bg-cover bg-center opacity-20 "
             style={{
-              backgroundImage: `url('/images/portfolio-bg.png')`,
-            }}
+  backgroundImage: `url(${portfoliobg})`,
+}}
           ></div>
 
           {/* DARK OVERLAY */}

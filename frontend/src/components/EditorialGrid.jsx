@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import p4 from "../assets/projects/p4.png"
+import p5 from "../assets/projects/p5.png"
 
 export default function EditorialGrid() {
   const [offset, setOffset] = useState(0);
@@ -45,8 +46,6 @@ blur-[160px]
 pointer-events-none
 " />
 
-  {/* 🌫️ GRAIN OVERLAY */}
-  <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-multiply bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
   {/* LEFT COLUMN */}
   <div className="flex flex-col gap-6 md:gap-8">
@@ -92,7 +91,7 @@ pointer-events-none
   {/*  MOBILE SWIPE */}
   <div className="block md:hidden">
     <Swiper spaceBetween={16} slidesPerView={1.2} centeredSlides={true}>
-      {[ "/images/p4.png", "/images/p5.png" ].map((img, i) => (
+      {[ p4, p5 ].map((img, i) => (
         <SwiperSlide key={i}>
           <div className="relative overflow-hidden rounded-2xl group">
             <img
