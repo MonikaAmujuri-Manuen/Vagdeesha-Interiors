@@ -71,18 +71,6 @@ export default function Hero() {
   "
 >
 
-  {/* EST */}
-  <p
-    className="
-      text-[10px] sm:text-xs
-      tracking-[0.28em] sm:tracking-[0.3em]
-      text-white/70
-      mb-1
-    "
-  >
-    EST. 1998
-  </p>
-
   {/* 
     <div className="flex justify-center items-center mb-4">
     <div className="logo-3d-wrapper w-[240px] sm:w-[300px] md:w-[380px] lg:w-[460px]">
