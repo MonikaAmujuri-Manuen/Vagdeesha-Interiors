@@ -294,12 +294,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
     -translate-y-6\r
     text-center\r
     px-5 sm:px-6 md:px-8\r
-  `,children:[(0,P.jsx)(`p`,{className:`\r
-      text-[10px] sm:text-xs\r
-      tracking-[0.28em] sm:tracking-[0.3em]\r
-      text-white/70\r
-      mb-1\r
-    `,children:`EST. 1998`}),(0,P.jsx)(`div`,{className:`\r
+  `,children:[(0,P.jsx)(`div`,{className:`\r
       flex justify-center items-center\r
 \r
       mb-1 sm:mb-2\r
