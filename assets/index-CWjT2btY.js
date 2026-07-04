@@ -2438,7 +2438,7 @@ md:h-[400px]\r
           leading-[1.9]\r
           max-w-md\r
           mb-10 sm:mb-14\r
-        `,children:`Share your vision with us and our team will craft interiors that feel timeless, refined, and deeply personal.`}),(0,P.jsxs)(`div`,{className:`space-y-8 sm:space-y-10`,children:[(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`p`,{className:`text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2`,children:`Email`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg`,children:`Vaagdeshainteriors@gmail.com`})]}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`p`,{className:`text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2`,children:`Phone`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg`,children:`+91 7599999729`})]}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`p`,{className:`text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2`,children:`Studio`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg leading-relaxed`,children:`1st Floor, Rama heights, Tarakarama Nagar, Srinivasa Nagar Colony, Guntur, Andhra Pradesh, 522006`})]})]})]}),(0,P.jsxs)(`div`,{className:`\r
+        `,children:`Share your vision with us and our team will craft interiors that feel timeless, refined, and deeply personal.`}),(0,P.jsxs)(`div`,{className:`space-y-8 sm:space-y-10`,children:[(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`p`,{className:`text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2`,children:`Email`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg`,children:`vaagdeshainteriors@gmail.com`})]}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`p`,{className:`text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2`,children:`Phone`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg`,children:`+91 7599999729`})]}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`p`,{className:`text-[#B08D57] text-xs tracking-[0.3em] uppercase mb-2`,children:`Studio`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg leading-relaxed`,children:`1st Floor, Rama heights, Tarakarama Nagar, Srinivasa Nagar Colony, Guntur, Andhra Pradesh, 522006`})]})]})]}),(0,P.jsxs)(`div`,{className:`\r
         relative\r
         overflow-hidden\r
 \r
@@ -2625,7 +2625,7 @@ justify-between\r
             tracking-[0.35em]\r
             uppercase\r
             mb-4\r
-          `,children:`Email`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg break-all`,children:`Vaagdeshainteriors@gmail.com`})]}),(0,P.jsxs)(`div`,{className:`\r
+          `,children:`Email`}),(0,P.jsx)(`p`,{className:`text-[#F5F1EA] text-base sm:text-lg break-all`,children:`vaagdeshainteriors@gmail.com`})]}),(0,P.jsxs)(`div`,{className:`\r
           group\r
 \r
           bg-white/[0.03]\r
