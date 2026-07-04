@@ -319,7 +319,7 @@ md:h-[400px]
           </p>
 
           <p className="text-[#F5F1EA] text-base sm:text-lg">
-            Vaagdeshainteriors@gmail.com
+            vaagdeshainteriors@gmail.com
           </p>
         </div>
 
@@ -732,7 +732,7 @@ justify-between
         </p>
 
         <p className="text-[#F5F1EA] text-base sm:text-lg break-all">
-          Vaagdeshainteriors@gmail.com
+          vaagdeshainteriors@gmail.com
         </p>
 
       </div>
