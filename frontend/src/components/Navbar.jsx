@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import logo from "../assets/navlogo.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,30 +27,56 @@ export default function Navbar() {
     transition-all duration-300
     bg-transparent
     py-4
-    backdrop-blur-[2px]
+    backdrop-blur-[3px]
   "
 >
   {/* CONTAINER */}
   <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8">
 
     {/* LOGO */}
+    
     <Link
-      to="/"
-      className={`
-        font-serif
-        ${textColor}
-        drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]
-        shrink-0
-      `}
+  to="/"
+  className={`${textColor} shrink-0`}
+  style={{ fontFamily: "Questrial" }}
+>
+  <div className="w-[190px]">
+    <h1
+      className="
+        text-[22px]
+        leading-none
+        text-center
+      "
+      style={{
+        fontFamily: "Questrial",
+        letterSpacing: "0.12em",
+        fontWeight: 300,
+      }}
     >
-      <h1 className="text-[20px] sm:text-lg tracking-wide leading-none">
-        VAAGDESHA
-      </h1>
+      VΛΛGDESHΛ
+    </h1>
 
-      <p className="text-[9px] sm:text-[10px] tracking-[0.35em] mt-1">
-        INTERIORS
-      </p>
-    </Link>
+    <p
+      style={{
+        fontFamily: "Questrial",
+        fontWeight: 800,
+        letterSpacing: "0.82em",
+      }}
+      className="
+        mt-[4px]
+        text-[10px]
+        sm:text-[12px]
+        text-[#C89B3C]
+        text-center
+        uppercase
+        whitespace-nowrap
+      "
+    >
+      INTERIORS
+    </p>
+  </div>
+</Link>
+    
 
     {/* DESKTOP MENU */}
     <nav

@@ -1,5 +1,6 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
@@ -11,13 +12,11 @@ import Footer from "./components/Footer";
 
 import Admin from "./pages/Admin";
 
-export default function App() {
-  return (
-    
-    <Router>
-      <CursorGlow />
-      <ScrollToTop />
+function AnimatedRoutes() {
+  const location = useLocation();
 
+  return (
+    <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
@@ -28,6 +27,30 @@ export default function App() {
       </Routes>
 
       {location.pathname !== "/admin" && <Footer />}
+
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: "#1A1A1A",
+            color: "#F5F1EA",
+            border: "1px solid rgba(176,141,87,0.3)",
+          },
+        }}
+      />
+    </>
+  );
+}
+
+
+export default function App() {
+  return (
+    <Router>
+      <CursorGlow />
+      <ScrollToTop />
+
+      <AnimatedRoutes />
     </Router>
   );
 }

@@ -40,7 +40,7 @@ import Counter from "../components/Counter";
 import PageWrapper from "../components/PageWrapper";
 import { Compass, Sofa, Pencil, ArrowLeft, ArrowRight } from "lucide-react";
 import {
-  PencilRuler,
+  PencilRuler, ChevronLeft, ChevronRight,
   Gem,
   Eye,
   Layers,
@@ -59,6 +59,19 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [currentService, setCurrentService] = useState(0);
+
+  const [current, setCurrent] = useState(0);
+const [isPaused, setIsPaused] = useState(false);
+
+useEffect(() => {
+  if (isPaused) return;
+
+  const interval = setInterval(() => {
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+  }, 7000);
+
+  return () => clearInterval(interval);
+}, [isPaused]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -2222,7 +2235,7 @@ to-[#262626]/95" />
 
     bg-[#0F0F10]
 
-    py-20 sm:py-24 md:py-28
+    py-14 sm:py-16 md:py-20
   "
       >
 
@@ -2287,135 +2300,120 @@ to-[#262626]/95" />
 
           {/* MARQUEE */}
           <div
-            className="
-        flex whitespace-nowrap
-
-        animate-marquee
-
-        gap-6 sm:gap-12 md:gap-24
-
-        min-w-max
-
-        pt-12 sm:pt-16 md:pt-20
-      "
+            className="pt-14 max-w-4xl mx-auto px-6"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
-
-            {[...testimonials, ...testimonials].map((item, i) => (
-
-              <div
-                key={i}
-
+            <div
+              key={current}
+              className="relative bg-[#1A1A1C]/70 backdrop-blur-md border border-white/5 rounded-[32px] p-8 md:p-12 transition-all duration-700 animate-fade"
+            >
+              <p
                 className="
-            flex flex-col sm:flex-row
-            items-start sm:items-center
-
-            gap-6 sm:gap-8
-
-            px-5 sm:px-6 md:px-8
-            py-5 sm:py-6
-
-            w-[300px]
-            sm:w-auto
-
-            bg-[#1A1A1C]/60
-
-            border border-white/[0.04]
-
-            rounded-[24px]
-            sm:rounded-[28px]
-            md:rounded-[32px]
-
-            backdrop-blur-md
-
-            text-left
-          "
-              >
-
-                {/* TEXT */}
-                <p
-                  className="
-              text-[18px]
-              sm:text-[20px]
-              md:text-[22px]
-
-              italic
-
-              font-cormorant
-
-              text-[#F5F1EA]
-
-              leading-[1.6]
-
-              max-w-[520px]
-
-              whitespace-normal
-            "
-                >
-                  “{item.text}”
-                </p>
-
-                {/* CLIENT */}
-                <div
-                  className="
-              flex items-center gap-4
-
-              shrink-0
-            "
-                >
-
-                  <img
-                    src={item.image}
-                    alt=""
-
-                    className="
-                w-10 h-10
-                sm:w-11 sm:h-11
-
-                rounded-full
-
-                object-cover
+                text-[#F5F1EA]
+                text-[22px]
+                md:text-[26px]
+                italic
+                font-cormorant
+                leading-[1.6]
+                text-center
+                max-w-4xl
+                mx-auto
               "
-                  />
+              >
+                “{testimonials[current].text}”
+              </p>
 
-                  <div>
+              <div className="flex flex-col items-center mt-10">
+                <img
+                  src={testimonials[current].image}
+                  alt=""
+                  className="w-16 h-16 rounded-full object-cover"
+                />
 
-                    <p
-                      className="
-                  text-[#F5F1EA]
-
-                  tracking-[0.1em]
-                  sm:tracking-[0.12em]
-
-                  text-[10px]
-                  sm:text-xs
-
+                <h4
+                  className="
+                  mt-4
                   uppercase
+                  tracking-[0.15em]
+                  text-[#F5F1EA]
+                  text-sm
                 "
-                    >
-                      {item.name}
-                    </p>
+                >
+                  {testimonials[current].name}
+                </h4>
 
-                    <p
-                      className="
-                  text-[#A8A29E]
-
-                  text-[10px]
-                  sm:text-xs
-
-                  mt-1
-                "
-                    >
-                      {item.role}
-                    </p>
-
-                  </div>
-
-                </div>
-
+                <p className="text-[#A8A29E] text-sm mt-2">
+                  {testimonials[current].role}
+                </p>
               </div>
 
-            ))}
+              {/* Arrows */}
 
+              <button
+                onClick={() =>
+                  setCurrent(
+                    (current - 1 + testimonials.length) % testimonials.length
+                  )
+                }
+                className="
+                absolute
+                left-4
+                top-1/2
+                -translate-y-1/2
+                w-11
+                h-11
+                rounded-full
+                border
+                border-white/10
+                bg-white/5
+                hover:bg-white/10
+                transition
+              "
+              >
+                <ChevronLeft className="w-5 h-5 text-white mx-auto" />
+              </button>
+
+              <button
+                onClick={() =>
+                  setCurrent(
+                    (current + 1) % testimonials.length
+                  )
+                }
+                className="
+                absolute
+                right-4
+                top-1/2
+                -translate-y-1/2
+                w-11
+                h-11
+                rounded-full
+                border
+                border-white/10
+                bg-white/5
+                hover:bg-white/10
+                transition
+              "
+              >
+                <ChevronRight className="w-5 h-5 text-white mx-auto" />
+              </button>
+            </div>
+
+            {/* Dots */}
+
+            <div className="flex justify-center gap-3 mt-10">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrent(index)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    current === index
+                      ? "w-8 bg-[#B08D57]"
+                      : "w-2.5 bg-white/25"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
         </div>

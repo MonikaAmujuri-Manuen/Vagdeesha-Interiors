@@ -65,7 +65,7 @@ export default function FeaturedCarousel() {
 
   return (
     <div
-      className="relative max-w-6xl mx-auto mb-24 md:mb-32 px-4 sm:px-6"
+      className="relative max-w-6xl mx-auto mb-16 md:mb-22 px-4 sm:px-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -185,9 +185,9 @@ if (i === current) {
         className="absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-20 
         bg-white backdrop-blur-md border border-white/30 
         text-[#6B0F1A] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center
-        hover:bg-[#6B0F1A]/50 transition"
+        hover:bg-[#6B0F1A]/50 transition "
       >
-        <ChevronLeft size={20} />
+        <ChevronLeft size={20}  />
       </button>
 
       <button
@@ -203,7 +203,7 @@ if (i === current) {
       </button>
 
       {/* DOTS */}
-      <div className="flex justify-center mt-6 md:mt-10 gap-2 md:gap-3">
+      <div className="flex justify-center mt-4 md:mt-6 gap-2 md:gap-3">
         {projects.map((_, i) => (
           <div
             key={i}

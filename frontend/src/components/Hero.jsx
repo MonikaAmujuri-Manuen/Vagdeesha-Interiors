@@ -36,7 +36,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[100vh] md:h-[105vh] w-full overflow-hidden">
+    <section className="relative h-[100vh] md:h-[110vh] w-full overflow-hidden">
 
       
       <div className="relative h-[100vh] md:h-[115vh] w-full overflow-hidden">
@@ -61,14 +61,12 @@ export default function Hero() {
 <div
   className="
     relative z-10
-
     flex flex-col
     items-center
     justify-center
-
     h-full
+    -translate-y-6
     text-center
-
     px-5 sm:px-6 md:px-8
   "
 >
@@ -79,7 +77,7 @@ export default function Hero() {
       text-[10px] sm:text-xs
       tracking-[0.28em] sm:tracking-[0.3em]
       text-white/70
-      mb-2
+      mb-1
     "
   >
     EST. 1998
@@ -119,7 +117,7 @@ export default function Hero() {
     className="
       flex justify-center items-center
 
-      mb-3 sm:mb-4
+      mb-1 sm:mb-2
       w-full
     "
   >
@@ -129,10 +127,10 @@ export default function Hero() {
       alt="logo"
 
       className="
-        w-[220px]
-        sm:w-[280px]
-        md:w-[380px]
-        lg:w-[460px]
+        w-[260px]
+        sm:w-[340px]
+        md:w-[440px]
+        lg:w-[500px]
 
         brightness-130
         contrast-110
@@ -147,7 +145,7 @@ export default function Hero() {
 
   {/* TAGLINE */}
   <p
-    className="
+    className="font-bold
       text-[10px]
       sm:text-xs
       md:text-sm
@@ -166,7 +164,7 @@ export default function Hero() {
   </p>
 
   {/* LINE */}
-  <div className="mt-4 mb-5 sm:mb-6">
+  <div className="mt-2 mb-3">
     <div
       className="
         w-10 sm:w-12 md:w-16
@@ -180,8 +178,7 @@ export default function Hero() {
   {/* BUTTONS */}
   <div
     className="
-      mt-2
-
+      mt-1
       flex flex-col
       sm:flex-row
 

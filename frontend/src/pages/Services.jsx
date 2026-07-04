@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 import servicehero from "../assets/services/services-hero.png";
 import service1 from "../assets/services/service1.png";
@@ -41,12 +42,15 @@ export default function Services() {
   return () => observer.disconnect();
 }, []);
 
+
 const services = [
   {
     title: "Residential Interiors",
     image: service1,
     description:
       "We design homes that reflect emotional warmth, elegance, and functionality.",
+
+    tagline: "DESIGNED\nAROUND YOU",
 
     points: [
       "Personalized conceptual planning",
@@ -61,6 +65,8 @@ const services = [
     description:
       "Functional yet aesthetic kitchens crafted with precision and premium finishes.",
 
+    tagline: "BEAUTY\nMEETS FUNCTION",
+
     points: [
       "Smart storage systems",
       "Premium finishes",
@@ -73,6 +79,8 @@ const services = [
     image: service3,
     description:
       "Transforming workspaces into inspiring environments that enhance productivity.",
+
+    tagline: "INSPIRED\nWORKSPACES",
 
     points: [
       "Brand-aligned design",
@@ -87,6 +95,8 @@ const services = [
     description:
       "Unique handcrafted furniture pieces blending art with functionality.",
 
+    tagline: "CRAFTED\nTO LAST",
+
     points: [
       "Tailored dimensions",
       "Premium materials",
@@ -100,6 +110,8 @@ const services = [
 
   description:
     "Designing grand convention spaces that balance elegance, functionality, and seamless guest experience for weddings, celebrations, and corporate gatherings.",
+
+  tagline: "CELEBRATE\nIN STYLE",
 
   points: [
     " Stage & backdrop design",
@@ -171,6 +183,38 @@ const showcaseItems = [
     }, []);
 
 
+    const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  show: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      delay,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+const fadeScale = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      delay: 0.75,
+    },
+  },
+};
+
+
   return (
     <>
     <SEO
@@ -204,30 +248,40 @@ bg-[#050505]
   {/* BACKGROUND IMAGE */}
   <div className="absolute inset-0">
 
-    <img
-      src={servicehero}
-      alt=""
-
-      className="
+    <motion.img
+    src={servicehero}
+    alt=""
+    initial={{ scale: 1 }}
+    animate={{ scale: 1.08 }}
+    transition={{
+        duration: 10,
+        ease: "easeOut",
+    }}
+    className="
         absolute inset-0
-
         w-full h-full
-
         object-cover
-      "
-    />
+    "
+/>
 
     {/* LEFT GRADIENT */}
-    <div
-      className="
-        absolute inset-0
-
-        bg-gradient-to-r
-        from-black/85
-        via-black/50
-        to-transparent
-      "
-    />
+    <motion.div
+  animate={{
+    opacity: [0.75, 0.9, 0.75],
+  }}
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="
+    absolute inset-0
+    bg-gradient-to-r
+    from-black/85
+    via-black/50
+    to-transparent
+  "
+/>
 
     {/* CINEMATIC VIGNETTE */}
     <div
@@ -268,7 +322,12 @@ md:pt-32
     <div className="max-w-[620px] w-full">
 
       {/* LABEL */}
-      <p
+      <motion.p
+    variants={fadeUp}
+    initial="hidden"
+    animate="show"
+    custom={0.1}
+    
         className="
           text-[#B08D57]
 
@@ -283,10 +342,14 @@ md:pt-32
         "
       >
         OUR SERVICES
-      </p>
+      </motion.p>
 
       {/* HEADING */}
-      <h1
+      <motion.h1
+    variants={fadeUp}
+    initial="hidden"
+    animate="show"
+    custom={0.3}
         className="
           font-serif
 
@@ -307,10 +370,15 @@ md:pt-32
         Interior
         <br />
         Experiences
-      </h1>
+      </motion.h1>
 
       {/* DESCRIPTION */}
-      <p
+      <motion.p
+    variants={fadeUp}
+    initial="hidden"
+    animate="show"
+    custom={0.5}
+
         className="
           text-[#C6C1BA]
 
@@ -328,17 +396,15 @@ md:pt-32
         From bespoke residential transformations
         to curated commercial ateliers, we translate
         your vision into a sanctuary of architectural elegance.
-      </p>
+      </motion.p>
 
       {/* BUTTONS */}
-      <div
-        className="
-          flex flex-wrap
-
-          gap-4 sm:gap-5
-        "
-      >
-
+      <motion.div
+    variants={fadeScale}
+    initial="hidden"
+    animate="show"
+    className="flex flex-wrap gap-4 sm:gap-5"
+>
         <button
           onClick={() => navigate("/contact#form")}
 
@@ -366,12 +432,14 @@ md:pt-32
 
             hover:bg-white/10
             hover:-translate-y-1
+            hover:scale-[1.03]
+            active:scale-[0.98]
           "
         >
           BOOK CONSULTATION
         </button>
 
-      </div>
+      </motion.div>
 
     </div>
 
@@ -387,8 +455,8 @@ md:pt-32
   className="
     relative z-10
 
-    pt-16 sm:pt-20 md:pt-32
-    pb-14 sm:pb-16 md:pb-24
+    pt-14 sm:pt-16 md:pt-20
+    pb-14 sm:pb-16 md:pb-20
     
     px-4 sm:px-6 lg:px-16
 
@@ -461,7 +529,7 @@ blur-[60px]
       className="
         max-w-6xl mx-auto
         grid md:grid-cols-2
-        gap-6 sm:gap-8 md:gap-10
+        gap-8 sm:gap-10 md:gap-12
         items-center
 
         px-4 sm:px-6
@@ -509,6 +577,10 @@ blur-[60px]
   className={`
     relative
 
+    flex
+    flex-col
+    justify-center
+
     bg-white/[0.03]
     backdrop-blur-md
 
@@ -516,11 +588,13 @@ blur-[60px]
 
     rounded-[22px] md:rounded-[28px]
 
-    p-5 sm:p-7 md:p-12
+    p-6 sm:p-8 md:p-10
 
     shadow-[0_20px_80px_rgba(0,0,0,0.35)]
 
     text-center md:text-left
+
+    overflow-hidden
 
     ${index % 2 !== 0
       ? "order-2 md:order-1"
@@ -541,6 +615,7 @@ blur-[60px]
   "
 />
 
+    <div className="relative z-10">
         <p
           className="
             text-[#C6A66A]
@@ -554,13 +629,13 @@ blur-[60px]
 
         <h2
           className="
-            text-[34px]
-            sm:text-[42px]
-            md:text-[56px]
+            text-[28px]
+            sm:text-[36px]
+            md:text-[42px]
             font-serif
             text-[#F5F1EA]
 
-            mb-6
+            mb-4 sm:mb-6
             leading-[1.1]
           "
         >
@@ -570,7 +645,7 @@ blur-[60px]
         <p
           className="
             text-[#A8A29E]
-            mb-8
+            mb-4
             text-[14px]
             sm:text-[15px]
             md:text-base
@@ -581,25 +656,94 @@ blur-[60px]
           {service.description}
         </p>
 
-        <div
-          className="
-            space-y-3
-            text-[#D6D0C7]
-            text-[14px]
-            sm:text-[15px]
-            md:text-base
-          "
-        >
+        <div className="mt-8 flex items-center justify-between gap-5">
 
-          {service.points.map((point, i) => (
+  {/* Points */}
+  <div
+    className="
+      flex-1
+      space-y-4
+      text-[#D6D0C7]
+      text-[14px]
+      sm:text-[15px]
+      md:text-base
+    "
+  >
+   {service.points.map((point, i) => (
+  <div
+    key={i}
+    className="flex items-center gap-3"
+  >
+    <span
+      className="
+        h-1.5
+        w-1.5
+        rounded-full
+        bg-[#C6A66A]
+        shrink-0
+      "
+    />
 
-            <p key={i}>
-              → {point}
-            </p>
+    <p
+      className="
+        leading-8
+        text-[#D6D0C7]
+      "
+    >
+      {point}
+    </p>
+  </div>
+))}
+  </div>
 
-          ))}
+  {/* Divider + Tagline */}
+  <div
+  className="
+    hidden
+    lg:flex
 
-        </div>
+    items-center
+
+    gap-4
+
+    ml-2
+  "
+>
+  {/* Gold Line */}
+  <div className="w-px h-28 bg-[#C6A66A]/35" />
+
+  {/* Tagline */}
+  <p
+    className="
+      inline-flex
+      items-center
+      justify-center
+
+      px-6 py-2.5
+      border border-[#C6A66A]/70
+      rounded-full
+      text-[#C6A66A]/80
+
+      text-[10px]
+      xl:text-[11px]
+
+      tracking-[0.32em]
+      uppercase
+
+      leading-[1.9]
+
+      whitespace-pre-line
+
+      text-left
+    "
+  >
+    {service.tagline}
+  </p>
+</div>
+
+</div>
+
+      </div>
 
       </div>
 
@@ -616,7 +760,7 @@ blur-[60px]
 <section
       className="
         relative
-        py-16 sm:py-20 md:py-30
+        py-14 sm:py-16 md:py-20
         
         px-4 sm:px-6 lg:px-16
         bg-[#050505]
@@ -1085,7 +1229,7 @@ blur-[60px]
   {/* CTA */}
 <div className="
   relative overflow-hidden
-  py-16 sm:py-20 md:py-33
+  py-14 sm:py-16 md:py-20
   border-t border-white/[0.05]
 ">
 
@@ -1168,7 +1312,6 @@ mb-8 sm:mb-10
       className="
         group relative overflow-hidden
         bg-[#F5F1EA]
-        text-black
         px-7 sm:px-10
         py-3 sm:py-4
         rounded-full
@@ -1180,7 +1323,14 @@ mb-8 sm:mb-10
       "
     >
 
-      <span className="relative z-10">
+      <span
+        className="
+          relative z-10
+          text-black
+          transition-colors duration-500
+          group-hover:text-white
+        "
+      >
         BOOK CONSULTATION
       </span>
 

@@ -1,11 +1,12 @@
 import SEO from "../components/SEO";
 import FeaturedCarousel from "../components/FeaturedCarousel";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import EditorialGrid from "../components/EditorialGrid";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import portfoliobg from "../assets/portfolio/portfolio-bg.png";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import living1 from "../assets/collections/living1.png"
 import living2 from "../assets/collections/living2.png"
@@ -23,11 +24,58 @@ export default function Portfolio() {
   const navigate = useNavigate();
   const [active, setActive] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-
+  const scrollRef = useRef(null);
+  
 
   useEffect(() => {
   window.scrollTo(0, 0);
 }, []);
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const fadeScale = {
+  hidden: {
+    opacity: 0,
+    scale: 0.97,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const CARD_WIDTH = 344;
+
+const scrollLeft = () => {
+  scrollRef.current?.scrollBy({
+    left: -CARD_WIDTH,
+    behavior: "smooth",
+  });
+};
+
+const scrollRight = () => {
+  scrollRef.current?.scrollBy({
+    left: CARD_WIDTH,
+    behavior: "smooth",
+  });
+};
 
   const collections = [
     {
@@ -293,17 +341,20 @@ export default function Portfolio() {
       <Navbar />
 
       {/* HERO */}
-      <div
-  className="
-    max-w-6xl mx-auto
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        className="
+          max-w-6xl mx-auto
 
-    grid md:grid-cols-2
+          grid md:grid-cols-2
 
-    gap-10 sm:gap-12 md:gap-12
+          gap-10 sm:gap-12 md:gap-12
 
-    mb-14 sm:mb-16 md:mb-20
-  "
-  >
+          mb-14 sm:mb-16 md:mb-20
+        "
+      >
        
         {/* LEFT */}
         <div className="text-center md:text-left">
@@ -325,10 +376,16 @@ export default function Portfolio() {
           </p>
         </div>
 
-      </div>
+      </motion.div>
 
       {/* CAROUSEL */}
-      <div className="relative max-w-7xl mx-auto">
+      <motion.div
+  variants={fadeScale}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.25 }}
+  className="relative max-w-7xl mx-auto"
+>
 <div className="absolute inset-0 bg-[#0F0F10]/70" />
         <div className="absolute inset-0 opacity-[0.12]">
   <img
@@ -342,12 +399,18 @@ export default function Portfolio() {
     <FeaturedCarousel />
   </div>
 
-</div>
+</motion.div>
 
       {/* GRID */}
       <EditorialGrid />
 
-      <section className="relative py-24 md:py-32 overflow-hidden bg-[#0F0F10]">
+      <motion.section
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.15 }}
+  className="relative py-16 md:py-20 overflow-hidden bg-[#0F0F10]"
+>
       {/* AMBIENT GLOW */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-[#B08D57]/[0.05] blur-[120px] rounded-full" />
@@ -368,17 +431,23 @@ export default function Portfolio() {
         </div>
 
         {/* HORIZONTAL COLLECTIONS */}
-        <div className="gap-10 md:gap-14
-flex gap-6 overflow-x-auto pb-6
+        <div
+  ref={scrollRef}
+  className="
+gap-10 md:gap-14
+flex gap-8 overflow-x-auto
+pb-6
 snap-x snap-mandatory
 scrollbar-hide
 [-ms-overflow-style:none]
 [scrollbar-width:none]
-">
+"
+>
           {collections.map((item, i) => (
   <div
-    key={i}
-    onClick={() => {
+  data-card
+  key={i}
+  onClick={() => {
   setActive(item);
   setSelectedProject(item.projects[0]);
 }}
@@ -449,6 +518,55 @@ scrollbar-hide
             </div>
           ))}
         </div>
+        <div className="flex justify-center items-center gap-10 mt-10">
+
+  <button
+    onClick={scrollLeft}
+    className="
+      group
+      w-14 h-14
+      rounded-full
+      border border-white/10
+      bg-white/[0.03]
+      backdrop-blur-xl
+      flex items-center justify-center
+      transition-all duration-500
+      hover:bg-[#B08D57]
+      hover:border-[#B08D57]
+      hover:scale-105
+      hover:shadow-[0_8px_30px_rgba(176,141,87,0.25)]
+    "
+  >
+    <ChevronLeft
+      size={22}
+      className="text-[#F5F1EA]"
+    />
+  </button>
+
+  <button
+    onClick={scrollRight}
+    className="
+      group
+      w-14 h-14
+      rounded-full
+      border border-white/10
+      bg-white/[0.03]
+      backdrop-blur-xl
+      flex items-center justify-center
+      transition-all duration-500
+      hover:bg-[#B08D57]
+      hover:border-[#B08D57]
+      hover:scale-105
+      hover:shadow-[0_8px_30px_rgba(176,141,87,0.25)]
+    "
+  >
+    <ChevronRight
+      size={22}
+      className="text-[#F5F1EA]"
+    />
+  </button>
+
+</div>
       </div>
 
       {/* MODAL */}
@@ -643,11 +761,11 @@ scrollbar-hide
             </div>
           </div>
       )}
-    </section>
+    </motion.section>
 
       {/* CTA */}
       {/* CTA */}
-<div className="relative overflow-hidden py-20 sm:py-28 md:py-40 border-t border-white/[0.05]">
+<div className="relative overflow-hidden py-16 sm:py-20 md:py-24 border-t border-white/[0.05]">
 
   {/* BACKGROUND */}
   <div className="absolute inset-0 bg-[#0B0B0C]" />
@@ -730,19 +848,29 @@ scrollbar-hide
         "
       >
 
-        <span className="relative z-10">
+        <span
+          className="
+            relative z-10
+            text-[#6B0F1A]
+            transition-colors duration-500
+            group-hover:text-white
+          "
+        >
           VIEW COLLECTIONS
         </span>
 
-        <div className="text-[#6B0F1A]
-          absolute inset-0
-          bg-gradient-to-r
-          from-[#7D1220]
-          to-[#B08D57]
-          opacity-0
-          group-hover:opacity-100
-          transition duration-500
-        " />
+        <div
+          className="
+            absolute inset-0
+            bg-gradient-to-r
+            from-[#8A1D2C]
+            via-[#A54A3C]
+            to-[#B08D57]
+            opacity-0
+            group-hover:opacity-100
+            transition-all duration-500
+          "
+        />
       </button>
 
       {/* SECONDARY */}

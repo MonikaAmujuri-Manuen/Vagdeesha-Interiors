@@ -93,8 +93,8 @@ const transformations = [
     flex items-center justify-center
     text-center
 
-    pt-32 sm:pt-36 md:pt-52
-    pb-24 md:pb-32
+    pt-14 sm:pt-16 md:pt-20
+    pb-16 md:pb-20
 
     transition-all duration-1000 ease-out
 
@@ -188,9 +188,9 @@ md:h-[400px]
     {/* HEADING */}
     <h1
       className="
-  text-[40px]
-sm:text-[56px]
-md:text-[88px]
+  text-[32px]
+sm:text-[40px]
+md:text-[56px]
 
   leading-[1]
   tracking-[-0.04em]
@@ -204,9 +204,7 @@ md:text-[88px]
 
   mb-6 sm:mb-10
 ">
-      Spaces They
-      <br />
-      Truly Feel.
+      Spaces They Truly Feel.
     </h1>
 
     {/* DESCRIPTION */}
@@ -313,7 +311,7 @@ md:text-[20px]
 
     {/*Featured Testimonials SECTION */}
 
-    <section className="py-16 md:py-24 px-4 sm:px-6 md:px-20 bg-[#0F0F10]">
+    <section className="py-14 md:py-20 px-4 sm:px-6 md:px-20 bg-[#0F0F10]">
 
       <div className="md:hidden">
   <Swiper
@@ -509,7 +507,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
     </section>
 
 
-<section className="relative py-20 md:py-32 px-4 sm:px-6 bg-[#0F0F10] overflow-hidden">
+<section className="relative py-14 md:py-20 px-4 sm:px-6 bg-[#0F0F10] overflow-hidden">
 
   {/* AMBIENT GLOW */}
   <div
@@ -705,25 +703,30 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
         </p>
 
         {/* LINK */}
-        <a
-          href="#view"
-          className="
-            inline-flex items-center gap-3
+        <button
+  onClick={() => {
+    document.getElementById("view")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }}
+  className="
+    inline-flex items-center gap-3
 
-            text-[#B08D57]
+    text-[#B08D57]
 
-            text-sm
-            tracking-[0.25em]
-            uppercase
+    text-sm
+    tracking-[0.25em]
+    uppercase
 
-            transition duration-500
+    transition duration-500
 
-            hover:text-[#F5F1EA]
-          "
-        >
-          Explore This Transformation 
-          <span>→</span>
-        </a>
+    hover:text-[#F5F1EA]
+  "
+>
+  Explore This Transformation
+  <span>→</span>
+</button>
 
       </div>
 
@@ -734,7 +737,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
 </section>
 
 
-    <section id="view" className="relative py-20 md:py-25 overflow-hidden bg-[#0F0F10]">
+    <section id="view" className="relative py-14 md:py-20 overflow-hidden bg-[#0F0F10]">
 
       {/* AMBIENT GLOW */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(176,141,87,0.08),transparent_60%)]" />
@@ -860,7 +863,7 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
 
   className={`
     relative overflow-hidden
-    py-24 md:py-32 px-4 sm:px-6
+    py-14 md:py-20 px-4 sm:px-6
     bg-[#0F0F10]
   `}
 >
@@ -872,29 +875,19 @@ border border-white/[0.05] p-5 sm:p-6 rounded-xl border border-[#E5D9CC]">
   " />
 
   {/* noise texture */}
-  <div className="absolute inset-0 opacity-[0.03]">
-    <img
-      src="/images/noise.jpg"
-      className="w-full h-full object-cover"
-    />
-  </div>
+  
 
-  <div className="
+  <div
+  className="
     relative z-10
-    max-w-4xl mx-auto
+    max-w-4xl
+    mx-auto
+
     text-center
 
-    bg-white/[0.03]
-    backdrop-blur-xl
-
-    border border-white/[0.06]
-
-    rounded-[32px]
-
-    px-5 sm:px-12
-    py-12 sm:py-16 md:py-20
-    shadow-[0_20px_80px_rgba(0,0,0,0.45)]
-  ">
+    px-5 sm:px-8
+  "
+>
 
     {/* small label */}
     <p className="

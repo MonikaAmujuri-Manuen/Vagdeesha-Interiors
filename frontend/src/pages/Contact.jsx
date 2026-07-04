@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 export default function Contact() {
   const ref = useRef();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (location.hash === "#form") {
@@ -73,10 +74,28 @@ const [fileName, setFileName] = useState("No file chosen");
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
-    if (file && file.type !== "application/pdf") {
-      alert("Only PDF files allowed");
-      return;
-    }
+    const allowedTypes = [
+  "application/pdf",
+
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+
+  "application/msword",
+
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+
+  "application/vnd.ms-excel",
+
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+];
+
+if (file && !allowedTypes.includes(file.type)) {
+  toast.error(
+    "Please upload a PDF, Image, Word or Excel file."
+  );
+  return;
+}
 
     setFormData({
       ...formData,
@@ -89,6 +108,28 @@ const [fileName, setFileName] = useState("No file chosen");
   e.preventDefault();
 
   try {
+    setLoading(true);
+    if (!formData.name.trim()) {
+  return toast.error("Please enter your name");
+}
+
+if (!formData.phone.trim()) {
+  return toast.error("Please enter your phone number");
+}
+
+if (!formData.email.trim()) {
+  return toast.error("Please enter your email");
+}
+
+if (!formData.details.trim()) {
+  return toast.error("Please enter your project details");
+}
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailRegex.test(formData.email)) {
+  return toast.error("Please enter a valid email address");
+}
     const form = new FormData();
 
     form.append("name", formData.name);
@@ -108,13 +149,15 @@ const [fileName, setFileName] = useState("No file chosen");
 
     const result = await res.json();
 
-    console.log(result);
+if (!res.ok) {
+  return toast.error(result.message || "Failed to send inquiry");
+}
 
-    toast.success("Inquiry submitted ✨", {
+toast.success("Inquiry submitted successfully! We'll contact you soon.", {
   style: {
     background: "#5A0F14",
     color: "#fff",
-    border: "1px solid #C89B3C"
+    border: "1px solid #C89B3C",
   },
 });
 
@@ -132,8 +175,10 @@ const [fileName, setFileName] = useState("No file chosen");
 
   } catch (error) {
     console.error(error);
-    toast.error("Something went wrong");
-  }
+    toast.error("Failed to send inquiry. Please try again.");
+  }finally {
+  setLoading(false);
+}
 };
 
 const inputStyle = `
@@ -186,7 +231,7 @@ const labelStyle = `
   className="
     relative
     overflow-hidden
-    py-20 sm:py-24 md:py-32
+    py-12 sm:py-16 md:py-20
     px-4 sm:px-6
     bg-[#0F0F10]
   "
@@ -274,7 +319,7 @@ md:h-[400px]
           </p>
 
           <p className="text-[#F5F1EA] text-base sm:text-lg">
-            hello@vaagdeesha.com
+            Vaagdeshainteriors@gmail.com
           </p>
         </div>
 
@@ -284,7 +329,7 @@ md:h-[400px]
           </p>
 
           <p className="text-[#F5F1EA] text-base sm:text-lg">
-            +91 98765 43210
+            +91 7599999729
           </p>
         </div>
 
@@ -294,7 +339,8 @@ md:h-[400px]
           </p>
 
           <p className="text-[#F5F1EA] text-base sm:text-lg leading-relaxed">
-            Hyderabad, India
+            1st Floor, Rama heights, Tarakarama Nagar, Srinivasa Nagar Colony, Guntur, 
+            Andhra Pradesh, 522006
           </p>
         </div>
 
@@ -398,7 +444,7 @@ md:h-[400px]
         <div>
 
           <p className="text-xs tracking-[0.28em] text-[#B08D57] mb-3 uppercase">
-            Upload House Plan (PDF)
+            Upload House Plan
           </p>
 
           <div
@@ -433,7 +479,7 @@ justify-between
                 transition-all duration-300
               "
             >
-              SELECT PDF
+              SELECT FILE
             </button>
 
             <span className="text-sm text-[#A8A29E] truncate max-w-full sm:max-w-[200px]">
@@ -442,7 +488,7 @@ justify-between
 
             <input
               type="file"
-              accept="application/pdf"
+              accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.xls,.xlsx"
               ref={fileRef}
               className="hidden"
               onChange={(e) => {
@@ -503,6 +549,9 @@ justify-between
 
         {/* BUTTON */}
         <button
+          type="submit"
+          disabled={loading}
+
           className="
             w-full
 
@@ -520,9 +569,12 @@ justify-between
             hover:shadow-[0_15px_40px_rgba(176,141,87,0.25)]
 
             transition-all duration-300
+            disabled:opacity-60
+            disabled:cursor-not-allowed
+            disabled:hover:scale-100
           "
         >
-          SUBMIT INQUIRY →
+          {loading ? "SENDING..." : "SUBMIT INQUIRY →"}
         </button>
 
       </form>
@@ -539,7 +591,7 @@ justify-between
     relative
     overflow-hidden
 
-    py-16 sm:py-20 md:py-24
+    py-12 sm:py-14 md:py-16
 
     bg-[#0F0F10]
   "
@@ -559,10 +611,9 @@ justify-between
     "
   />
 
-  <div className="relative z-10 max-w-6xl mx-auto px-6">
+  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
 
-    <div className="grid sm:grid-cols-2 md:grid-cols-3
-gap-5 sm:gap-6 ">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 items-stretch">
 
       {/* PHONE */}
       <div
@@ -580,6 +631,11 @@ gap-5 sm:gap-6 ">
 
           text-center
 
+          flex flex-col
+          justify-center
+
+          min-h-[300px]
+
           transition-all duration-500
 
           hover:-translate-y-2
@@ -590,7 +646,7 @@ gap-5 sm:gap-6 ">
 
         <div
           className="
-            w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-6
+            w-14 h-14 sm:w-14 sm:h-14 mx-auto mb-5
 
             rounded-full
 
@@ -608,14 +664,14 @@ gap-5 sm:gap-6 ">
             text-xs
             tracking-[0.35em]
             uppercase
-            mb-5
+            mb-4
           "
         >
           Phone
         </p>
 
-        <p className="text-[#F5F1EA] text-lg sm:text-xl">
-          +91 98765 43210
+        <p className="text-[#F5F1EA] text-base sm:text-lg">
+          +91 7599999729
         </p>
 
       </div>
@@ -630,11 +686,16 @@ gap-5 sm:gap-6 ">
 
           border border-white/[0.06]
 
-          rounded-[28px]
+          rounded-[22px] sm:rounded-[28px]
 
-          p-10
+          p-6 sm:p-8 md:p-10
 
           text-center
+
+          flex flex-col
+          justify-center
+
+          min-h-[300px]
 
           transition-all duration-500
 
@@ -646,7 +707,7 @@ gap-5 sm:gap-6 ">
 
         <div
           className="
-            w-14 h-14 mx-auto mb-6
+            w-14 h-14 mx-auto mb-5
 
             rounded-full
 
@@ -664,14 +725,14 @@ gap-5 sm:gap-6 ">
             text-xs
             tracking-[0.35em]
             uppercase
-            mb-5
+            mb-4
           "
         >
           Email
         </p>
 
-        <p className="text-[#F5F1EA] text-lg sm:text-xl break-all">
-          hello@vaagdeesha.com
+        <p className="text-[#F5F1EA] text-base sm:text-lg break-all">
+          Vaagdeshainteriors@gmail.com
         </p>
 
       </div>
@@ -686,11 +747,16 @@ gap-5 sm:gap-6 ">
 
           border border-white/[0.06]
 
-          rounded-[28px]
+          rounded-[22px] sm:rounded-[28px]
 
-          p-10
+          p-6 sm:p-8 md:p-10
 
           text-center
+
+          flex flex-col
+          justify-center
+
+          min-h-[300px]
 
           transition-all duration-500
 
@@ -702,7 +768,7 @@ gap-5 sm:gap-6 ">
 
         <div
           className="
-            w-14 h-14 mx-auto mb-6
+            w-14 h-14 mx-auto mb-5
 
             rounded-full
 
@@ -720,18 +786,18 @@ gap-5 sm:gap-6 ">
             text-xs
             tracking-[0.35em]
             uppercase
-            mb-5
+            mb-4
           "
         >
           Studio
         </p>
 
-        <p className="text-[#F5F1EA] text-lg sm:text-xl leading-[1.9]">
-          Avenue de l'Atelier 42,
+        <p className="text-[#F5F1EA] text-base sm:text-lg leading-[1.9]">
+          1st Floor, Rama heights, Tarakarama Nagar, 
           <br />
-          Design District,
+          Srinivasa Nagar Colony, 
           <br />
-          Hyderabad, TS 500033
+          Guntur, Andhra Pradesh, 522006
         </p>
 
       </div>
