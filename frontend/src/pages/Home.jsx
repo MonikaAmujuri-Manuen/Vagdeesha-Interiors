@@ -30,7 +30,7 @@ import portfolio12 from "../assets/portfolio/portfolio12.jpg"
 
 import service01 from "../assets/services/service01.jpg"
 import service02 from "../assets/services/service02.jpg"
-import service03 from "../assets/services/service04.jpg"
+import service03 from "../assets/services/service03.jpg"
 import service04 from "../assets/services/service04.jpg"
 
 import client from "../assets/client.png"
